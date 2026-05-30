@@ -49,33 +49,39 @@ Respond ONLY with valid JSON, no markdown, no explanation:
 }
 
 function parseJSON(text) {
-  // Strip markdown fences if present (handles various formats)
+  // Strip markdown fences if present
   let cleaned = text
     .replace(/```json\s*/gi, '')
-    .replace(/```\s*$/gm, '')
-    .replace(/^[\s\S]*?(\{)/, '$1')  // Remove anything before first {
-    .replace(/(\})[\s\S]*$/, '$1')    // Remove anything after last }
+    .replace(/```\s*/g, '')
     .trim();
 
-  // Fix common JSON issues before parsing
-  // 1. Remove trailing commas before closing brackets/braces
-  cleaned = cleaned.replace(/,\s*([}\]])/g, '$1');
-  // 2. Remove trailing commas in arrays (e.g. "value," next to closing bracket)
-  cleaned = cleaned.replace(/,\s*\]/g, ']');
-  cleaned = cleaned.replace(/,\s*\}/g, '}');
-  // 3. Handle single quotes (DeepSeek sometimes uses them instead of double)
+  // Find the first { and last } to extract just the JSON object
+  const firstBrace = cleaned.indexOf('{');
+  const lastBrace = cleaned.lastIndexOf('}');
+  if (firstBrace !== -1 && lastBrace > firstBrace) {
+    cleaned = cleaned.slice(firstBrace, lastBrace + 1);
+  }
+
+  // Fix single quotes (DeepSeek sometimes uses them)
   cleaned = cleaned.replace(/'/g, '"');
 
-  // Try parsing directly
+  // Try parsing directly first
   try {
     return JSON.parse(cleaned);
   } catch (e) {
-    // If failed, try to find the mealPlan object specifically
-    const match = cleaned.match(/\{"mealPlan":\s*\[[\s\S]*?\}\]\}/);
-    if (match) {
-      return JSON.parse(match[0].replace(/,\s*([}\]])/g, '$1'));
+    // If that fails, try to fix trailing commas (common LLM issue)
+    try {
+      const fixed = cleaned
+        .replace(/,\s*([}\]])/g, '$1');
+      return JSON.parse(fixed);
+    } catch (e2) {
+      // Last resort: extract just the mealPlan array
+      const match = cleaned.match(/\{"mealPlan":\s*\[[\s\S]*?\]\}/);
+      if (match) {
+        return JSON.parse(match[0].replace(/,\s*([}\]])/g, '$1'));
+      }
+      throw e2;
     }
-    throw e;
   }
 }
 
@@ -119,7 +125,7 @@ exports.handler = async (event) => {
         { role: 'system', content: 'You are a professional keto dietitian and chef. Respond with valid JSON only.' },
         { role: 'user', content: prompt },
       ],
-      max_tokens: 4096,
+      max_tokens: 8192,
       temperature: 0.7,
     };
 
