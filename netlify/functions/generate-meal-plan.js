@@ -163,26 +163,8 @@ exports.handler = async (event) => {
 
     if (!content) throw new Error('Empty response from LLM');
 
-    // Debug: log response length for troubleshooting
-    console.log(`LLM response length: ${content.length} chars`);
-
     // For providers without JSON mode, parse the text response
-    let result;
-    try {
-      result = provider.supportsJsonMode ? JSON.parse(content) : parseJSON(content);
-    } catch (parseError) {
-      // Return the raw content so we can see what DeepSeek returns
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({
-          debug: true,
-          rawResponse: content,
-          parseError: parseError.message,
-          contentLength: content.length,
-        }),
-      };
-    }
+    const result = provider.supportsJsonMode ? JSON.parse(content) : parseJSON(content);
 
     return { statusCode: 200, headers, body: JSON.stringify(result) };
   } catch (error) {
