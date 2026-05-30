@@ -1,8 +1,21 @@
 // LLM Service - handles communication with the backend API for AI-generated meal plans
 
-// In development (Vite), this goes through the Vite proxy to localhost:3001
-// On Netlify, netlify.toml redirects /api/* to the serverless function
-const API_PATH = `${import.meta.env.VITE_API_URL || ''}/api/generate-meal-plan`;
+function getApiPath(): string {
+  // 1. If user explicitly set VITE_API_URL, use that (custom backend deployment)
+  const customUrl = import.meta.env.VITE_API_URL;
+  if (customUrl) return `${customUrl}/api/generate-meal-plan`;
+
+  // 2. On Netlify, call the serverless function directly
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    if (host.includes('netlify.app') || host.includes('netlify')) {
+      return '/.netlify/functions/generate-meal-plan';
+    }
+  }
+
+  // 3. Local development — uses Vite proxy to localhost:3001
+  return '/api/generate-meal-plan';
+}
 
 export interface LLMUserData {
   age: number;
@@ -69,7 +82,7 @@ export async function generateMealPlan(userData: LLMUserData): Promise<LLMRespon
   const timeout = setTimeout(() => controller.abort(), 120000); // 2-minute timeout
 
   try {
-    const response = await fetch(API_PATH, {
+    const response = await fetch(getApiPath(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
