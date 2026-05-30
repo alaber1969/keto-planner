@@ -49,9 +49,34 @@ Respond ONLY with valid JSON, no markdown, no explanation:
 }
 
 function parseJSON(text) {
-  // Strip markdown fences if present
-  const cleaned = text.replace(/```json\s*/gi, '').replace(/```\s*$/gm, '').trim();
-  return JSON.parse(cleaned);
+  // Strip markdown fences if present (handles various formats)
+  let cleaned = text
+    .replace(/```json\s*/gi, '')
+    .replace(/```\s*$/gm, '')
+    .replace(/^[\s\S]*?(\{)/, '$1')  // Remove anything before first {
+    .replace(/(\})[\s\S]*$/, '$1')    // Remove anything after last }
+    .trim();
+
+  // Fix common JSON issues before parsing
+  // 1. Remove trailing commas before closing brackets/braces
+  cleaned = cleaned.replace(/,\s*([}\]])/g, '$1');
+  // 2. Remove trailing commas in arrays (e.g. "value," next to closing bracket)
+  cleaned = cleaned.replace(/,\s*\]/g, ']');
+  cleaned = cleaned.replace(/,\s*\}/g, '}');
+  // 3. Handle single quotes (DeepSeek sometimes uses them instead of double)
+  cleaned = cleaned.replace(/'/g, '"');
+
+  // Try parsing directly
+  try {
+    return JSON.parse(cleaned);
+  } catch (e) {
+    // If failed, try to find the mealPlan object specifically
+    const match = cleaned.match(/\{"mealPlan":\s*\[[\s\S]*?\}\]\}/);
+    if (match) {
+      return JSON.parse(match[0].replace(/,\s*([}\]])/g, '$1'));
+    }
+    throw e;
+  }
 }
 
 exports.handler = async (event) => {
@@ -98,12 +123,13 @@ exports.handler = async (event) => {
       temperature: 0.7,
     };
 
-    // OpenAI supports native JSON mode, DeepSeek doesn't
+      // OpenAI supports native JSON mode, DeepSeek doesn't
     if (provider.supportsJsonMode) {
       requestBody.response_format = { type: 'json_object' };
     } else {
-      // For DeepSeek, add stronger instruction
-      requestBody.messages[0].content += ' No markdown, no code fences.';
+      // For DeepSeek: add stronger JSON instruction
+      requestBody.messages[0].content = 'You are a professional keto dietitian and chef. You output ONLY valid JSON. No markdown, no code fences, no explanation. Your entire response must be parseable by JSON.parse(). Start with { and end with }.';
+      requestBody.messages[1].content += '\n\nIMPORTANT: Output ONLY valid JSON that can be parsed. No markdown formatting. No code blocks. Just raw JSON.';
     }
 
     const response = await fetch(`${provider.baseUrl}/chat/completions`, {
