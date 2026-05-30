@@ -165,9 +165,16 @@ exports.handler = async (event) => {
     try {
       result = provider.supportsJsonMode ? JSON.parse(content) : parseJSON(content);
     } catch (parseError) {
-      // Attach raw content preview to error for debugging
-      parseError.rawContent = content.slice(0, 500);
-      throw parseError;
+      // Return the raw content so we can see what DeepSeek returns
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({
+          debug: true,
+          rawResponse: content.slice(0, 2000),
+          parseError: parseError.message,
+        }),
+      };
     }
 
     return { statusCode: 200, headers, body: JSON.stringify(result) };
