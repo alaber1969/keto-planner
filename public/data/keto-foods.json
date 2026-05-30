@@ -1,0 +1,336 @@
+{
+  "proteins": [
+    {
+      "id": "eggs",
+      "name": "Eggs",
+      "category": "protein",
+      "calories": 155,
+      "fat": 11,
+      "protein": 13,
+      "carbs": 1.1,
+      "fiber": 0,
+      "serving": "2 large eggs (100g)",
+      "description": "High-quality protein with healthy fats"
+    },
+    {
+      "id": "salmon",
+      "name": "Wild-caught Salmon",
+      "category": "protein",
+      "calories": 208,
+      "fat": 12.4,
+      "protein": 22.1,
+      "carbs": 0,
+      "fiber": 0,
+      "serving": "100g fillet",
+      "description": "Rich in omega-3 fatty acids"
+    },
+    {
+      "id": "grass-fed-beef",
+      "name": "Grass-fed Beef",
+      "category": "protein",
+      "calories": 250,
+      "fat": 15,
+      "protein": 26,
+      "carbs": 0,
+      "fiber": 0,
+      "serving": "100g",
+      "description": "High-quality protein with healthy fats"
+    },
+    {
+      "id": "chicken-thigh",
+      "name": "Chicken Thigh",
+      "category": "protein",
+      "calories": 209,
+      "fat": 10.9,
+      "protein": 26,
+      "carbs": 0,
+      "fiber": 0,
+      "serving": "100g skinless",
+      "description": "Juicy protein with moderate fat content"
+    },
+    {
+      "id": "pork-chops",
+      "name": "Pork Chops",
+      "category": "protein",
+      "calories": 231,
+      "fat": 14,
+      "protein": 25,
+      "carbs": 0,
+      "fiber": 0,
+      "serving": "100g",
+      "description": "Tender protein source"
+    },
+    {
+      "id": "bacon",
+      "name": "Bacon",
+      "category": "protein",
+      "calories": 541,
+      "fat": 42,
+      "protein": 37,
+      "carbs": 1.4,
+      "fiber": 0,
+      "serving": "100g",
+      "description": "High-fat protein for keto"
+    }
+  ],
+  "fats": [
+    {
+      "id": "avocado",
+      "name": "Avocado",
+      "category": "fat",
+      "calories": 160,
+      "fat": 14.7,
+      "protein": 2,
+      "carbs": 8.5,
+      "fiber": 6.7,
+      "serving": "1 medium (150g)",
+      "description": "Nutrient-dense healthy fats"
+    },
+    {
+      "id": "olive-oil",
+      "name": "Extra Virgin Olive Oil",
+      "category": "fat",
+      "calories": 884,
+      "fat": 100,
+      "protein": 0,
+      "carbs": 0,
+      "fiber": 0,
+      "serving": "100ml",
+      "description": "Heart-healthy monounsaturated fats"
+    },
+    {
+      "id": "coconut-oil",
+      "name": "Coconut Oil",
+      "category": "fat",
+      "calories": 862,
+      "fat": 99.1,
+      "protein": 0,
+      "carbs": 0,
+      "fiber": 0,
+      "serving": "100g",
+      "description": "MCTs for quick energy"
+    },
+    {
+      "id": "butter",
+      "name": "Grass-fed Butter",
+      "category": "fat",
+      "calories": 717,
+      "fat": 81,
+      "protein": 0.9,
+      "carbs": 0.1,
+      "fiber": 0,
+      "serving": "100g",
+      "description": "Rich in fat-soluble vitamins"
+    },
+    {
+      "id": "macadamia-nuts",
+      "name": "Macadamia Nuts",
+      "category": "fat",
+      "calories": 718,
+      "fat": 75.8,
+      "protein": 7.9,
+      "carbs": 13.4,
+      "fiber": 8.6,
+      "serving": "100g",
+      "description": "Low-carb nuts with healthy fats"
+    },
+    {
+      "id": "walnuts",
+      "name": "Walnuts",
+      "category": "fat",
+      "calories": 654,
+      "fat": 65.2,
+      "protein": 15.2,
+      "carbs": 13.7,
+      "fiber": 6.7,
+      "serving": "100g",
+      "description": "Omega-3 rich nuts"
+    }
+  ],
+  "vegetables": [
+    {
+      "id": "spinach",
+      "name": "Fresh Spinach",
+      "category": "vegetable",
+      "calories": 23,
+      "fat": 0.4,
+      "protein": 2.9,
+      "carbs": 3.6,
+      "fiber": 2.2,
+      "serving": "100g",
+      "description": "Nutrient-dense leafy green"
+    },
+    {
+      "id": "broccoli",
+      "name": "Broccoli",
+      "category": "vegetable",
+      "calories": 34,
+      "fat": 0.4,
+      "protein": 2.8,
+      "carbs": 6.6,
+      "fiber": 2.6,
+      "serving": "100g",
+      "description": "Fiber-rich cruciferous vegetable"
+    },
+    {
+      "id": "cauliflower",
+      "name": "Cauliflower",
+      "category": "vegetable",
+      "calories": 25,
+      "fat": 0.3,
+      "protein": 1.9,
+      "carbs": 5,
+      "fiber": 2,
+      "serving": "100g",
+      "description": "Versatile low-carb vegetable"
+    },
+    {
+      "id": "brussels-sprouts",
+      "name": "Brussels Sprouts",
+      "category": "vegetable",
+      "calories": 43,
+      "fat": 0.3,
+      "protein": 3.4,
+      "carbs": 8.9,
+      "fiber": 3.8,
+      "serving": "100g",
+      "description": "Fiber-rich mini cabbages"
+    },
+    {
+      "id": "asparagus",
+      "name": "Asparagus",
+      "category": "vegetable",
+      "calories": 20,
+      "fat": 0.1,
+      "protein": 2.2,
+      "carbs": 3.9,
+      "fiber": 2.1,
+      "serving": "100g",
+      "description": "Low-calorie nutrient powerhouse"
+    },
+    {
+      "id": "bell-peppers",
+      "name": "Bell Peppers",
+      "category": "vegetable",
+      "calories": 31,
+      "fat": 0.3,
+      "protein": 1,
+      "carbs": 7,
+      "fiber": 2.5,
+      "serving": "100g",
+      "description": "Colorful vitamin C source"
+    },
+    {
+      "id": "zucchini",
+      "name": "Zucchini",
+      "category": "vegetable",
+      "calories": 17,
+      "fat": 0.3,
+      "protein": 1.2,
+      "carbs": 3.1,
+      "fiber": 1,
+      "serving": "100g",
+      "description": "Versatile summer squash"
+    },
+    {
+      "id": "kale",
+      "name": "Kale",
+      "category": "vegetable",
+      "calories": 49,
+      "fat": 0.9,
+      "protein": 4.3,
+      "carbs": 8.8,
+      "fiber": 3.6,
+      "serving": "100g",
+      "description": "Superfood leafy green"
+    }
+  ],
+  "dairy": [
+    {
+      "id": "cheddar-cheese",
+      "name": "Cheddar Cheese",
+      "category": "dairy",
+      "calories": 403,
+      "fat": 33.1,
+      "protein": 25,
+      "carbs": 1.3,
+      "fiber": 0,
+      "serving": "100g",
+      "description": "Rich in calcium and protein"
+    },
+    {
+      "id": "mozzarella",
+      "name": "Mozzarella Cheese",
+      "category": "dairy",
+      "calories": 300,
+      "fat": 22.4,
+      "protein": 22.2,
+      "carbs": 2.2,
+      "fiber": 0,
+      "serving": "100g",
+      "description": "Mild cheese perfect for melting"
+    },
+    {
+      "id": "greek-yogurt",
+      "name": "Full-fat Greek Yogurt",
+      "category": "dairy",
+      "calories": 97,
+      "fat": 5,
+      "protein": 9,
+      "carbs": 4,
+      "fiber": 0,
+      "serving": "100g",
+      "description": "Protein-rich probiotic food"
+    },
+    {
+      "id": "heavy-cream",
+      "name": "Heavy Cream",
+      "category": "dairy",
+      "calories": 345,
+      "fat": 37,
+      "protein": 2.1,
+      "carbs": 2.8,
+      "fiber": 0,
+      "serving": "100ml",
+      "description": "High-fat dairy for cooking"
+    }
+  ],
+  "berries": [
+    {
+      "id": "strawberries",
+      "name": "Strawberries",
+      "category": "fruit",
+      "calories": 32,
+      "fat": 0.3,
+      "protein": 0.7,
+      "carbs": 7.7,
+      "fiber": 2,
+      "serving": "100g",
+      "description": "Low-carb antioxidant-rich berries"
+    },
+    {
+      "id": "raspberries",
+      "name": "Raspberries",
+      "category": "fruit",
+      "calories": 52,
+      "fat": 0.7,
+      "protein": 1.2,
+      "carbs": 11.9,
+      "fiber": 6.5,
+      "serving": "100g",
+      "description": "High-fiber low-net-carb berries"
+    },
+    {
+      "id": "blackberries",
+      "name": "Blackberries",
+      "category": "fruit",
+      "calories": 43,
+      "fat": 0.5,
+      "protein": 1.4,
+      "carbs": 9.6,
+      "fiber": 5.3,
+      "serving": "100g",
+      "description": "Antioxidant powerhouse berries"
+    }
+  ]
+}

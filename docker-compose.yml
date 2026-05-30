@@ -1,0 +1,53 @@
+# ============================================
+# KetoPlanner - Docker Compose for Development
+# ============================================
+# Usage:
+#   docker-compose up -d          # Start both frontend and backend
+#   docker-compose up -d backend  # Start only the backend
+# ============================================
+
+services:
+  # Backend API (Express + LLM)
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: keto-planner-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - LLM_PROVIDER=${LLM_PROVIDER:-openai}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o-mini}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - CORS_ORIGIN=*
+      - RATE_LIMIT_MAX=20
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Optional: standalone backend for development (hot reload)
+  backend-dev:
+    image: node:20-alpine
+    container_name: keto-planner-backend-dev
+    working_dir: /app/server
+    volumes:
+      - ./server:/app/server
+      - ./dist:/app/dist
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - LLM_PROVIDER=${LLM_PROVIDER:-openai}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o-mini}
+    command: sh -c "npm install && node --watch index.js"
+    profiles:
+      - dev

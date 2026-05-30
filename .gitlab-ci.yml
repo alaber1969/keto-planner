@@ -1,0 +1,130 @@
+# KetoPlanner - GitLab CI/CD Pipeline
+# Deploys the backend server (with frontend served as static files)
+
+stages:
+  - install
+  - lint
+  - build
+  - deploy
+
+variables:
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
+
+# Cache node_modules for faster builds
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - server/node_modules/
+    - .pnpm-store/
+
+# ---- FRONTEND JOBS ----
+
+frontend-install:
+  stage: install
+  image: node:${NODE_VERSION}
+  script:
+    - corepack enable
+    - corepack prepare pnpm@${PNPM_VERSION} --activate
+    - pnpm install --frozen-lockfile
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 hour
+
+frontend-lint:
+  stage: lint
+  image: node:${NODE_VERSION}
+  script:
+    - corepack enable
+    - corepack prepare pnpm@${PNPM_VERSION} --activate
+    - pnpm lint
+  dependencies:
+    - frontend-install
+
+frontend-build:
+  stage: build
+  image: node:${NODE_VERSION}
+  script:
+    - corepack enable
+    - corepack prepare pnpm@${PNPM_VERSION} --activate
+    - pnpm build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+  dependencies:
+    - frontend-install
+
+# ---- BACKEND JOBS ----
+
+backend-install:
+  stage: install
+  image: node:${NODE_VERSION}
+  script:
+    - cd server
+    - npm ci
+  artifacts:
+    paths:
+      - server/node_modules/
+    expire_in: 1 hour
+
+# ---- DEPLOYMENT ----
+
+deploy-to-production:
+  stage: deploy
+  image: node:${NODE_VERSION}
+  only:
+    - main
+    - master
+  variables:
+    NODE_ENV: "production"
+  script:
+    # Install PM2 for process management
+    - npm install -g pm2
+
+    # Install backend dependencies
+    - cd server
+    - npm ci --production
+
+    # Copy built frontend to server directory
+    - cd ..
+    - cp -r dist/ server/dist/
+
+    # Start or restart the application
+    - pm2 delete keto-planner 2>/dev/null || true
+    - pm2 start server/index.js --name keto-planner
+    - pm2 save
+
+    # Verify deployment
+    - sleep 3
+    - curl -f http://localhost:${PORT:-3001}/api/health || echo "Health check failed"
+  environment:
+    name: production
+    url: https://your-domain.com
+  dependencies:
+    - frontend-build
+    - backend-install
+
+# Docker-based deployment (alternative)
+docker-build-and-deploy:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  only:
+    - main
+    - master
+  variables:
+    DOCKER_IMAGE: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}
+    DOCKER_TAG_LATEST: ${CI_REGISTRY_IMAGE}:latest
+  script:
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - docker build -t ${DOCKER_IMAGE} -t ${DOCKER_TAG_LATEST} .
+    - docker push ${DOCKER_IMAGE}
+    - docker push ${DOCKER_TAG_LATEST}
+    # Deploy to your server (customize this part)
+    # - ssh user@server "docker pull ${DOCKER_TAG_LATEST} && docker-compose up -d"
+  dependencies:
+    - frontend-build

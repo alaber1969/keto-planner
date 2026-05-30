@@ -1,0 +1,251 @@
+{
+  "mealTemplates": {
+    "breakfast": [
+      {
+        "id": "eggs-bacon-avocado",
+        "name": "Scrambled Eggs with Bacon and Avocado",
+        "ingredients": [
+          {"id": "eggs", "amount": 2, "unit": "large"},
+          {"id": "bacon", "amount": 2, "unit": "strips"},
+          {"id": "avocado", "amount": 0.5, "unit": "medium"},
+          {"id": "butter", "amount": 1, "unit": "tbsp"}
+        ],
+        "instructions": "Scramble eggs in butter, serve with crispy bacon and sliced avocado",
+        "prepTime": 10,
+        "calories": 520,
+        "fat": 45,
+        "protein": 25,
+        "carbs": 4,
+        "fiber": 3.5
+      },
+      {
+        "id": "keto-omelet",
+        "name": "Cheese and Spinach Omelet",
+        "ingredients": [
+          {"id": "eggs", "amount": 3, "unit": "large"},
+          {"id": "cheddar-cheese", "amount": 30, "unit": "g"},
+          {"id": "spinach", "amount": 50, "unit": "g"},
+          {"id": "butter", "amount": 1, "unit": "tbsp"}
+        ],
+        "instructions": "Beat eggs, cook in butter, add cheese and spinach, fold omelet",
+        "prepTime": 8,
+        "calories": 445,
+        "fat": 35,
+        "protein": 25,
+        "carbs": 3,
+        "fiber": 1.1
+      },
+      {
+        "id": "bulletproof-coffee",
+        "name": "Bulletproof Coffee with Berries",
+        "ingredients": [
+          {"id": "butter", "amount": 1, "unit": "tbsp"},
+          {"id": "coconut-oil", "amount": 1, "unit": "tbsp"},
+          {"id": "strawberries", "amount": 50, "unit": "g"}
+        ],
+        "instructions": "Blend coffee with fats, serve with fresh berries",
+        "prepTime": 5,
+        "calories": 280,
+        "fat": 28,
+        "protein": 0.5,
+        "carbs": 4,
+        "fiber": 1
+      }
+    ],
+    "lunch": [
+      {
+        "id": "salmon-salad",
+        "name": "Grilled Salmon with Spinach Salad",
+        "ingredients": [
+          {"id": "salmon", "amount": 150, "unit": "g"},
+          {"id": "spinach", "amount": 100, "unit": "g"},
+          {"id": "avocado", "amount": 0.5, "unit": "medium"},
+          {"id": "olive-oil", "amount": 2, "unit": "tbsp"}
+        ],
+        "instructions": "Grill salmon, toss spinach with olive oil, serve with avocado",
+        "prepTime": 15,
+        "calories": 580,
+        "fat": 45,
+        "protein": 35,
+        "carbs": 6,
+        "fiber": 4.6
+      },
+      {
+        "id": "keto-burger",
+        "name": "Bunless Burger with Cheese",
+        "ingredients": [
+          {"id": "grass-fed-beef", "amount": 120, "unit": "g"},
+          {"id": "cheddar-cheese", "amount": 40, "unit": "g"},
+          {"id": "spinach", "amount": 50, "unit": "g"},
+          {"id": "avocado", "amount": 0.5, "unit": "medium"}
+        ],
+        "instructions": "Grill beef patty, top with cheese, serve on spinach with avocado",
+        "prepTime": 12,
+        "calories": 625,
+        "fat": 48,
+        "protein": 40,
+        "carbs": 6,
+        "fiber": 4.5
+      },
+      {
+        "id": "chicken-salad",
+        "name": "Chicken Thigh with Kale Salad",
+        "ingredients": [
+          {"id": "chicken-thigh", "amount": 150, "unit": "g"},
+          {"id": "kale", "amount": 80, "unit": "g"},
+          {"id": "olive-oil", "amount": 2, "unit": "tbsp"},
+          {"id": "walnuts", "amount": 20, "unit": "g"}
+        ],
+        "instructions": "Roast chicken thigh, massage kale with olive oil, top with walnuts",
+        "prepTime": 20,
+        "calories": 625,
+        "fat": 52,
+        "protein": 32,
+        "carbs": 9,
+        "fiber": 4.2
+      }
+    ],
+    "dinner": [
+      {
+        "id": "pork-broccoli",
+        "name": "Pork Chops with Garlic Broccoli",
+        "ingredients": [
+          {"id": "pork-chops", "amount": 150, "unit": "g"},
+          {"id": "broccoli", "amount": 150, "unit": "g"},
+          {"id": "butter", "amount": 2, "unit": "tbsp"},
+          {"id": "olive-oil", "amount": 1, "unit": "tbsp"}
+        ],
+        "instructions": "Pan-sear pork chops, sauté broccoli in butter and garlic",
+        "prepTime": 18,
+        "calories": 565,
+        "fat": 40,
+        "protein": 40,
+        "carbs": 10,
+        "fiber": 3.9
+      },
+      {
+        "id": "salmon-asparagus",
+        "name": "Baked Salmon with Roasted Asparagus",
+        "ingredients": [
+          {"id": "salmon", "amount": 180, "unit": "g"},
+          {"id": "asparagus", "amount": 200, "unit": "g"},
+          {"id": "olive-oil", "amount": 2, "unit": "tbsp"},
+          {"id": "butter", "amount": 1, "unit": "tbsp"}
+        ],
+        "instructions": "Bake salmon with herbs, roast asparagus with olive oil",
+        "prepTime": 25,
+        "calories": 520,
+        "fat": 35,
+        "protein": 42,
+        "carbs": 8,
+        "fiber": 4.2
+      },
+      {
+        "id": "beef-cauliflower",
+        "name": "Beef Stir-fry with Cauliflower Rice",
+        "ingredients": [
+          {"id": "grass-fed-beef", "amount": 150, "unit": "g"},
+          {"id": "cauliflower", "amount": 200, "unit": "g"},
+          {"id": "bell-peppers", "amount": 100, "unit": "g"},
+          {"id": "coconut-oil", "amount": 2, "unit": "tbsp"}
+        ],
+        "instructions": "Stir-fry beef and peppers, serve over cauliflower rice",
+        "prepTime": 15,
+        "calories": 580,
+        "fat": 42,
+        "protein": 42,
+        "carbs": 13,
+        "fiber": 6
+      }
+    ],
+    "snacks": [
+      {
+        "id": "macadamia-berries",
+        "name": "Macadamia Nuts with Berries",
+        "ingredients": [
+          {"id": "macadamia-nuts", "amount": 20, "unit": "g"},
+          {"id": "raspberries", "amount": 50, "unit": "g"}
+        ],
+        "instructions": "Serve nuts with fresh berries",
+        "prepTime": 2,
+        "calories": 170,
+        "fat": 15,
+        "protein": 2,
+        "carbs": 8,
+        "fiber": 5
+      },
+      {
+        "id": "cheese-olives",
+        "name": "Cheese and Avocado",
+        "ingredients": [
+          {"id": "cheddar-cheese", "amount": 30, "unit": "g"},
+          {"id": "avocado", "amount": 0.3, "unit": "medium"}
+        ],
+        "instructions": "Slice cheese and avocado, serve together",
+        "prepTime": 3,
+        "calories": 170,
+        "fat": 15,
+        "protein": 8,
+        "carbs": 3,
+        "fiber": 2
+      }
+    ]
+  },
+  "weeklyTemplates": [
+    {
+      "name": "Balanced Keto Week",
+      "description": "Well-rounded week with varied proteins and vegetables",
+      "days": [
+        {
+          "day": 1,
+          "breakfast": "eggs-bacon-avocado",
+          "lunch": "salmon-salad",
+          "dinner": "pork-broccoli",
+          "snack": "macadamia-berries"
+        },
+        {
+          "day": 2,
+          "breakfast": "bulletproof-coffee",
+          "lunch": "keto-burger",
+          "dinner": "salmon-asparagus",
+          "snack": "cheese-olives"
+        },
+        {
+          "day": 3,
+          "breakfast": "keto-omelet",
+          "lunch": "chicken-salad",
+          "dinner": "beef-cauliflower",
+          "snack": "macadamia-berries"
+        },
+        {
+          "day": 4,
+          "breakfast": "eggs-bacon-avocado",
+          "lunch": "salmon-salad",
+          "dinner": "pork-broccoli",
+          "snack": "cheese-olives"
+        },
+        {
+          "day": 5,
+          "breakfast": "keto-omelet",
+          "lunch": "keto-burger",
+          "dinner": "salmon-asparagus",
+          "snack": "macadamia-berries"
+        },
+        {
+          "day": 6,
+          "breakfast": "bulletproof-coffee",
+          "lunch": "chicken-salad",
+          "dinner": "beef-cauliflower",
+          "snack": "cheese-olives"
+        },
+        {
+          "day": 7,
+          "breakfast": "eggs-bacon-avocado",
+          "lunch": "salmon-salad",
+          "dinner": "pork-broccoli",
+          "snack": "macadamia-berries"
+        }
+      ]
+    }
+  ]
+}
