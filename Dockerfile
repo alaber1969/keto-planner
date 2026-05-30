@@ -14,8 +14,8 @@ RUN corepack enable && corepack prepare pnpm@9 --activate
 # Copy config files
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Install dependencies (no frozen lockfile for CI compatibility)
+RUN pnpm install --no-frozen-lockfile
 
 # Copy source code
 COPY tsconfig.json tsconfig.app.json tsconfig.node.json vite.config.ts tailwind.config.js postcss.config.js components.json index.html ./
