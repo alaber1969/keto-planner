@@ -25,15 +25,37 @@ const apiLimiter = rateLimit({
 });
 app.use('/api/', apiLimiter);
 
-// --- OpenAI Client ---
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// --- Provider Configuration ---
+const PROVIDERS = {
+  openai: {
+    baseURL: undefined,
+    apiKey: () => process.env.OPENAI_API_KEY || process.env.LLM_API_KEY,
+    model: () => process.env.OPENAI_MODEL || 'gpt-4o-mini',
+    supportsJsonMode: true,
+  },
+  deepseek: {
+    baseURL: 'https://api.deepseek.com',
+    apiKey: () => process.env.DEEPSEEK_API_KEY || process.env.LLM_API_KEY,
+    model: () => 'deepseek-chat',
+    supportsJsonMode: false,
+  },
+};
 
-// --- LLM Provider Mapping ---
 function getLLMProvider() {
   return (process.env.LLM_PROVIDER || 'openai').toLowerCase();
 }
+
+function getProviderConfig() {
+  const name = getLLMProvider();
+  return PROVIDERS[name] || PROVIDERS.openai;
+}
+
+// --- OpenAI Client (also works with DeepSeek via baseURL) ---
+const provider = getProviderConfig();
+const openai = new OpenAI({
+  apiKey: provider.apiKey(),
+  ...(provider.baseURL ? { baseURL: provider.baseURL } : {}),
+});
 
 // --- Prompt Builder ---
 function buildMealPlanPrompt(userData) {
@@ -115,11 +137,12 @@ The JSON structure must be exactly:
 Use ${targetLanguage}`
 }
 
-// --- Generate via OpenAI ---
+// --- Generate via OpenAI / DeepSeek ---
 async function generateWithOpenAI(prompt) {
-  const model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+  const p = getProviderConfig();
+  const model = p.model();
 
-  const response = await openai.chat.completions.create({
+  const requestBody = {
     model,
     messages: [
       {
@@ -133,11 +156,23 @@ async function generateWithOpenAI(prompt) {
     ],
     temperature: 0.7,
     max_tokens: 4096,
-    response_format: { type: 'json_object' },
-  });
+  };
+
+  // Only add JSON mode for OpenAI (DeepSeek doesn't support it)
+  if (p.supportsJsonMode) {
+    requestBody.response_format = { type: 'json_object' };
+  }
+
+  const response = await openai.chat.completions.create(requestBody);
 
   const content = response.choices[0]?.message?.content;
   if (!content) throw new Error('Empty response from LLM');
+
+  // For providers without JSON mode, strip any markdown fences
+  if (!p.supportsJsonMode) {
+    const cleaned = content.replace(/```json\s*/gi, '').replace(/```\s*$/gm, '').trim();
+    return JSON.parse(cleaned);
+  }
 
   return JSON.parse(content);
 }
@@ -219,10 +254,11 @@ function validateMealPlan(plan) {
 
 // --- Routes ---
 app.get('/api/health', (req, res) => {
+  const p = getProviderConfig();
   res.json({
     status: 'ok',
     provider: getLLMProvider(),
-    model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+    model: p.model(),
   });
 });
 
@@ -285,7 +321,7 @@ app.listen(PORT, () => {
   ║──────────────────────────────────────────────║
   ║  Port:       ${String(PORT).padEnd(30)}║
   ║  LLM Provider: ${getLLMProvider().padEnd(27)}║
-  ║  Model:      ${(process.env.OPENAI_MODEL || 'gpt-4o-mini').padEnd(27)}║
+  ║  Model:      ${(getProviderConfig().model()).padEnd(27)}║
   ║  Environment: ${(process.env.NODE_ENV || 'development').padEnd(27)}║
   ╚══════════════════════════════════════════════╝
   `);
