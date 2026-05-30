@@ -1,6 +1,11 @@
 // LLM Service - handles communication with the backend API for AI-generated meal plans
 
+// On Netlify, functions are at /.netlify/functions/generate-meal-plan
+// On other platforms or local dev, use the VITE_API_URL or relative path
 const API_BASE = import.meta.env.VITE_API_URL || '';
+// Check if we're on Netlify (no env var set and running in production)
+const IS_NETLIFY = !import.meta.env.VITE_API_URL && window.location.hostname.includes('netlify.app');
+const API_PATH = IS_NETLIFY ? '/.netlify/functions/generate-meal-plan' : `${API_BASE}/api/generate-meal-plan`;
 
 export interface LLMUserData {
   age: number;
@@ -67,7 +72,7 @@ export async function generateMealPlan(userData: LLMUserData): Promise<LLMRespon
   const timeout = setTimeout(() => controller.abort(), 120000); // 2-minute timeout
 
   try {
-    const response = await fetch(`${API_BASE}/api/generate-meal-plan`, {
+    const response = await fetch(API_PATH, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -100,11 +105,11 @@ export async function generateMealPlan(userData: LLMUserData): Promise<LLMRespon
       throw new Error('Request timed out. The AI is taking too long — please try again.');
     }
 
-    // If it's a network error (no server running)
+    // If it's a network error (no server/function running)
     if (error.message === 'Failed to fetch' || error.message.includes('NetworkError')) {
       throw new Error(
-        'Cannot connect to the AI server. ' +
-        'Make sure the backend is running (npm run start from the server/ folder).'
+        'Cannot connect to the AI service. ' +
+        'Make sure the backend function is deployed correctly.'
       );
     }
 
