@@ -147,20 +147,42 @@ exports.handler = async (event) => {
     }
 
     const data = await response.json();
+
+    // Check for DeepSeek API errors
+    if (data.error) {
+      throw new Error(`DeepSeek API error: ${data.error.message || JSON.stringify(data.error)}`);
+    }
+
     const content = data.choices?.[0]?.message?.content;
 
     if (!content) throw new Error('Empty response from LLM');
 
+    // Debug: log response length for troubleshooting
+    console.log(`LLM response length: ${content.length} chars`);
+
     // For providers without JSON mode, parse the text response
-    const result = provider.supportsJsonMode ? JSON.parse(content) : parseJSON(content);
+    let result;
+    try {
+      result = provider.supportsJsonMode ? JSON.parse(content) : parseJSON(content);
+    } catch (parseError) {
+      // Attach raw content preview to error for debugging
+      parseError.rawContent = content.slice(0, 500);
+      throw parseError;
+    }
 
     return { statusCode: 200, headers, body: JSON.stringify(result) };
   } catch (error) {
-    console.error('Function error:', error);
+    console.error('Function error:', error.message);
+    // Include raw response in debug for DeepSeek issues
+    const debug = error.rawContent
+      ? ` | Raw preview: ${JSON.stringify(error.rawContent.slice(0, 300))}`
+      : '';
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: error.message || 'Failed to generate meal plan' }),
+      body: JSON.stringify({
+        error: error.message + debug,
+      }),
     };
   }
 };
