@@ -177,8 +177,9 @@ exports.handler = async (event) => {
         headers,
         body: JSON.stringify({
           debug: true,
-          rawResponse: content.slice(0, 2000),
+          rawResponse: content,
           parseError: parseError.message,
+          contentLength: content.length,
         }),
       };
     }
