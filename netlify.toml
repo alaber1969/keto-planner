@@ -1,0 +1,18 @@
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Redirects for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# API function
+[[redirects]]
+  from = "/api/generate-meal-plan"
+  to = "/.netlify/functions/generate-meal-plan"
+  status = 200

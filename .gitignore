@@ -34,3 +34,6 @@ server/node_modules/
 
 # Claude / AI local config
 .claude/
+
+# Netlify
+.netlify/
