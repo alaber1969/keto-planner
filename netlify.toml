@@ -5,14 +5,14 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Redirects for SPA routing
+# API function (MUST be before the catch-all redirect)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Redirects for SPA routing (catch-all at the end)
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
-
-# API function
-[[redirects]]
-  from = "/api/generate-meal-plan"
-  to = "/.netlify/functions/generate-meal-plan"
   status = 200
