@@ -29,7 +29,7 @@ setInterval(() => {
 // --- Middleware ---
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? ['https://keto-planner-production.up.railway.app', 'https://keto-planner.netlify.app']
+    ? ['https://ketoai.app', 'https://keto-planner-production.up.railway.app']
     : '*',
   methods: ['POST', 'GET'],
 }));

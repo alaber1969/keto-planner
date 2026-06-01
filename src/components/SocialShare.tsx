@@ -13,7 +13,7 @@ interface SocialShareProps {
 export default function SocialShare({
   title = 'KetoPlanner — AI-Powered Keto Diet Calculator & Meal Planner',
   description = 'Get your personalized keto macro calculations and AI-generated 7-day meal plan.',
-  url = 'https://keto-planner-production.up.railway.app/',
+  url = 'https://ketoai.app/',
   variant = 'row',
 }: SocialShareProps) {
   const [copied, setCopied] = useState(false);

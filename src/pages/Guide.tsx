@@ -172,7 +172,7 @@ export default function Guide() {
           <Share2 className="h-5 w-5 text-emerald-600" />
           <span className="font-medium text-gray-700">Share this guide:</span>
         </div>
-        <SocialShare url="https://keto-planner-production.up.railway.app/#/guide" />
+        <SocialShare url="https://ketoai.app/#/guide" />
       </div>
 
       {/* Quick Links */}
@@ -247,7 +247,7 @@ function generateTextGuide(): string {
   content += '  • Use the shopping list to stay organized\n\n';
 
   content += '========================================\n';
-  content += 'KetoPlanner - keto-planner-production.up.railway.app\n';
+  content += 'KetoPlanner - https://ketoai.app\n';
   content += 'Not medical advice. Consult your doctor.\n';
   content += '========================================\n';
 

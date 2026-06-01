@@ -9,4 +9,4 @@ Disallow: /#/privacy
 Disallow: /#/terms
 Disallow: /#/disclaimer
 
-Sitemap: https://keto-planner-production.up.railway.app/sitemap.xml
+Sitemap: https://ketoai.app/sitemap.xml
