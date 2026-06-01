@@ -8,6 +8,10 @@ import Calculator from './pages/Calculator';
 import MealPlanner from './pages/MealPlanner';
 import SavedPlans from './pages/Progress';
 import Education from './pages/Education';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Disclaimer from './pages/Disclaimer';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -24,8 +28,12 @@ function App() {
                 <Route path="/meal-planner" element={<MealPlanner />} />
                 <Route path="/progress" element={<SavedPlans />} />
                 <Route path="/education" element={<Education />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
               </Routes>
             </main>
+            <Footer />
             <Toaster />
           </div>
         </Router>
