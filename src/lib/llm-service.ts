@@ -1,19 +1,11 @@
 // LLM Service - handles communication with the backend API for AI-generated meal plans
 
 function getApiPath(): string {
-  // 1. If user explicitly set VITE_API_URL, use that (custom backend deployment)
-  const customUrl = import.meta.env.VITE_API_URL;
-  if (customUrl) return `${customUrl}/api/generate-meal-plan`;
-
-  // 2. On Netlify, call the serverless function directly
-  if (typeof window !== 'undefined') {
-    const host = window.location.hostname;
-    if (host.includes('netlify.app') || host.includes('netlify')) {
-      return '/.netlify/functions/generate-meal-plan';
-    }
+  // 1. If user explicitly set VITE_API_URL, use that (custom backend)
+  if (import.meta.env.VITE_API_URL) {
+    return `${import.meta.env.VITE_API_URL}/api/generate-meal-plan`;
   }
-
-  // 3. Local development — uses Vite proxy to localhost:3001
+  // 2. Default: same domain (works on Railway where Express serves both)
   return '/api/generate-meal-plan';
 }
 
