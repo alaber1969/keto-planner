@@ -165,7 +165,7 @@ async function generateWithOpenAI(prompt) {
       },
     ],
     temperature: 0.7,
-    max_tokens: 4096,
+    max_tokens: 8192,
   };
 
   // Only add JSON mode for OpenAI (DeepSeek doesn't support it)
@@ -188,13 +188,20 @@ async function generateWithOpenAI(prompt) {
     if (firstBrace !== -1 && lastBrace > firstBrace) {
       cleaned = cleaned.slice(firstBrace, lastBrace + 1);
     }
-    // Fix trailing commas
+    // Fix trailing commas (common LLM issue)
     cleaned = cleaned.replace(/,\s*([}\]])/g, '$1');
+    // Fix missing closing brace (truncated response)
+    let openBraces = (cleaned.match(/\{/g) || []).length;
+    let closeBraces = (cleaned.match(/\}/g) || []).length;
+    while (closeBraces < openBraces) {
+      cleaned += '}';
+      closeBraces++;
+    }
     try {
       return JSON.parse(cleaned);
     } catch (parseErr) {
       // Log the raw content for debugging
-      console.error('JSON parse error. Raw content preview:', content.slice(0, 500));
+      console.error('JSON parse error:', parseErr.message, 'Content length:', content.length, 'Preview:', content.slice(0, 1000));
       throw new Error(`Failed to parse LLM response as JSON: ${parseErr.message}`);
     }
   }
