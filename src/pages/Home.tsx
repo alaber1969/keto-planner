@@ -83,7 +83,7 @@ export default function Home() {
                 Start Planning <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+            <Button size="lg" variant="outline" className="border-emerald-200 bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm" asChild>
               <Link to="/education">
                 Learn About Keto
               </Link>
