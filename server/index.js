@@ -50,12 +50,22 @@ function getProviderConfig() {
   return PROVIDERS[name] || PROVIDERS.openai;
 }
 
-// --- OpenAI Client (also works with DeepSeek via baseURL) ---
-const provider = getProviderConfig();
-const openai = new OpenAI({
-  apiKey: provider.apiKey(),
-  ...(provider.baseURL ? { baseURL: provider.baseURL } : {}),
-});
+// Lazy OpenAI client — only created when actually needed
+let _openai = null;
+function getOpenAIClient() {
+  if (!_openai) {
+    const p = getProviderConfig();
+    const apiKey = p.apiKey();
+    if (!apiKey) {
+      throw new Error(`No API key configured for provider "${getLLMProvider()}". Set ${getLLMProvider() === 'openai' ? 'OPENAI_API_KEY' : 'LLM_API_KEY'} environment variable.`);
+    }
+    _openai = new OpenAI({
+      apiKey,
+      ...(p.baseURL ? { baseURL: p.baseURL } : {}),
+    });
+  }
+  return _openai;
+}
 
 // --- Prompt Builder ---
 function buildMealPlanPrompt(userData) {
@@ -163,7 +173,7 @@ async function generateWithOpenAI(prompt) {
     requestBody.response_format = { type: 'json_object' };
   }
 
-  const response = await openai.chat.completions.create(requestBody);
+  const response = await getOpenAIClient().chat.completions.create(requestBody);
 
   const content = response.choices[0]?.message?.content;
   if (!content) throw new Error('Empty response from LLM');
