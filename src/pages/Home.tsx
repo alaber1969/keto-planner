@@ -91,46 +91,26 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <div className="absolute right-0 top-0 h-full w-1/2 overflow-hidden">
-          {/* Decorative gradient */}
-          <div className="absolute inset-0 opacity-20" style={{
-            background: 'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.5) 0%, transparent 60%), radial-gradient(circle at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(255,255,255,0.2) 0%, transparent 40%)',
-          }} />
-          {/* Decorative floating keto food icons */}
-          <svg className="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Avocado - top left */}
-            <g transform="translate(50, 40)" className="animate-pulse" style={{ animationDuration: '4s' }}>
-              <ellipse cx="20" cy="25" rx="18" ry="22" fill="currentColor" opacity="0.4"/>
-              <circle cx="20" cy="20" r="10" fill="currentColor" opacity="0.3"/>
-            </g>
-            {/* Egg - top right */}
-            <g transform="translate(280, 60)" className="animate-pulse" style={{ animationDuration: '5s' }}>
-              <ellipse cx="15" cy="20" rx="12" ry="16" fill="currentColor" opacity="0.3"/>
-              <circle cx="15" cy="18" r="7" fill="currentColor" opacity="0.2"/>
-            </g>
-            {/* Fish - middle */}
-            <g transform="translate(320, 180)">
-              <ellipse cx="20" cy="12" rx="22" ry="8" fill="currentColor" opacity="0.25"/>
-              <polygon points="42,12 50,4 50,20" fill="currentColor" opacity="0.25"/>
-            </g>
-            {/* Leaf/vegetable - bottom */}
-            <g transform="translate(60, 280)">
-              <path d="M20 30 Q25 10 40 15 Q30 20 35 35 Q25 25 20 30Z" fill="currentColor" opacity="0.3"/>
-              <path d="M20 30 Q15 10 0 15 Q10 20 5 35 Q15 25 20 30Z" fill="currentColor" opacity="0.2"/>
-            </g>
-            {/* Nuts - bottom right */}
-            <g transform="translate(270, 300)">
-              <circle cx="10" cy="10" r="6" fill="currentColor" opacity="0.2"/>
-              <circle cx="22" cy="15" r="5" fill="currentColor" opacity="0.25"/>
-              <circle cx="15" cy="22" r="4" fill="currentColor" opacity="0.2"/>
-            </g>
-            {/* Protein/bacon - middle left */}
-            <g transform="translate(20, 160)">
-              <rect x="0" y="5" width="40" height="6" rx="3" fill="currentColor" opacity="0.2"/>
-              <rect x="5" y="15" width="35" height="5" rx="2.5" fill="currentColor" opacity="0.15"/>
-              <rect x="10" y="24" width="30" height="5" rx="2.5" fill="currentColor" opacity="0.2"/>
-            </g>
-          </svg>
+        <div className="absolute right-0 top-0 h-full w-1/2 opacity-30">
+          {/*
+            🖼️ HERO IMAGE — Replace this with your own image
+            ================================================
+            1. Save your image to: public/images/hero.jpg
+            2. Uncomment the <img> tag below
+            3. Delete the placeholder div
+            4. Commit + push
+
+            Recommended: 1200x800px, transparent PNG or dark-themed keto food photo
+            Free images: unsplash.com search "keto food" or "healthy ingredients"
+          */}
+          <div className="h-full w-full bg-gradient-to-br from-emerald-500/10 to-teal-500/10" />
+          {/*
+          <img
+            src="/images/hero.jpg"
+            alt="Keto foods"
+            className="h-full w-full object-cover rounded-l-3xl"
+          />
+          */}
         </div>
       </section>
 
