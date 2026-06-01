@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /#/calculator
+Allow: /#/meal-planner
+Allow: /#/guide
+Allow: /#/education
+Allow: /#/progress
+Disallow: /#/privacy
+Disallow: /#/terms
+Disallow: /#/disclaimer
+
+Sitemap: https://keto-planner-production.up.railway.app/sitemap.xml

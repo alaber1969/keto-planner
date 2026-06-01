@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Clock, ShoppingCart, Download, RefreshCw, Calculator, AlertTriangle, Lightbulb, ChefHat } from 'lucide-react';
+import { Sparkles, Clock, ShoppingCart, Download, RefreshCw, Calculator, AlertTriangle, Lightbulb, ChefHat, Share2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -11,6 +11,7 @@ import { Label } from '../components/ui/label';
 import { useUserData } from '../contexts/UserDataContext';
 import { generateMealPlan, getFallbackMealPlan, LLMDayPlan, LLMMeal } from '../lib/llm-service';
 import { saveMealPlan } from '../lib/meal-plan-storage';
+import SocialShare from '../components/SocialShare';
 import { toast } from 'sonner';
 
 const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -641,6 +642,21 @@ export default function MealPlanner() {
             </div>
           </CardContent>
         </Card>
+      )}
+
+      {/* Social Share */}
+      {mealPlans.length > 0 && (
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-white rounded-lg border border-gray-200">
+          <div className="flex items-center gap-2">
+            <Share2 className="h-5 w-5 text-emerald-600" />
+            <span className="font-medium text-gray-700">Share this meal plan:</span>
+          </div>
+          <SocialShare
+            title="Check out my personalized keto meal plan from KetoPlanner!"
+            description="I just generated a custom 7-day keto meal plan using AI. Try it yourself!"
+            url="https://keto-planner-production.up.railway.app/#/meal-planner"
+          />
+        </div>
       )}
 
       {/* Info Footer */}

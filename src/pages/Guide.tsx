@@ -1,9 +1,10 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Printer, Download, ArrowRight, Sparkles, Calculator, Utensils, ClipboardList, BookOpen, AlertTriangle } from 'lucide-react';
+import { Printer, Download, ArrowRight, Sparkles, Calculator, Utensils, ClipboardList, BookOpen, AlertTriangle, Share2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Alert, AlertDescription } from '../components/ui/alert';
+import SocialShare from '../components/SocialShare';
 
 const steps = [
   {
@@ -164,6 +165,15 @@ export default function Guide() {
           </ul>
         </CardContent>
       </Card>
+
+      {/* Share */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-white rounded-lg border border-gray-200">
+        <div className="flex items-center gap-2">
+          <Share2 className="h-5 w-5 text-emerald-600" />
+          <span className="font-medium text-gray-700">Share this guide:</span>
+        </div>
+        <SocialShare url="https://keto-planner-production.up.railway.app/#/guide" />
+      </div>
 
       {/* Quick Links */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

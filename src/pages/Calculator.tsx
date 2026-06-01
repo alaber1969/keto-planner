@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
-import { Calculator as CalculatorIcon, ArrowRight, User, Activity, Target, Sparkles } from 'lucide-react';
+import { Calculator as CalculatorIcon, ArrowRight, User, Activity, Target, Sparkles, Share2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../components/ui/form';
@@ -26,6 +26,7 @@ import {
   validateUserData,
   UserData
 } from '../lib/calculations';
+import SocialShare from '../components/SocialShare';
 import { toast } from 'sonner';
 
 const formSchema = z.object({
@@ -307,6 +308,21 @@ export default function Calculator() {
           <Button size="lg" variant="outline" onClick={() => setResults(null)}>
             Recalculate
           </Button>
+        </div>
+
+        {/* Share Results */}
+        <div className="flex justify-center">
+          <div className="inline-flex items-center gap-4 p-3 bg-white rounded-lg border border-gray-200">
+            <span className="text-sm text-gray-500 flex items-center gap-1">
+              <Share2 className="h-4 w-4" />
+              Share your results:
+            </span>
+            <SocialShare
+              title="I just calculated my keto macros on KetoPlanner!"
+              description={`My targets: ${results.macros.calories} cal/day, ${results.macros.fat}g fat, ${results.macros.protein}g protein, ${results.macros.carbs}g carbs. BMI: ${results.bmi}.`}
+              url="https://keto-planner-production.up.railway.app/#/calculator"
+            />
+          </div>
         </div>
 
         {/* AI Prompt */}
