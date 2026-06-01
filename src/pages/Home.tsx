@@ -210,17 +210,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Share + Rating */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Share + Rating + Support */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="text-center p-6 bg-white rounded-2xl border border-gray-200">
           <h3 className="text-lg font-semibold text-gray-900 mb-2">Share KetoPlanner</h3>
-          <p className="text-gray-600 mb-4 text-sm">Know someone who wants to start keto? Share this free tool with them!</p>
+          <p className="text-gray-600 mb-4 text-sm">Know someone who wants to start keto? Share this free tool!</p>
           <div className="flex justify-center">
             <SocialShare variant="row" />
           </div>
         </div>
-        <div className="p-6 bg-white rounded-2xl border border-gray-200">
+        <div className="p-6 bg-white rounded-2xl border border-gray-200 text-center">
           <StarRating />
+        </div>
+        <div className="text-center p-6 bg-white rounded-2xl border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">Support the Project</h3>
+          <p className="text-gray-600 mb-4 text-sm">If this tool helped you, consider buying me a coffee!</p>
+          <a href="https://buymeacoffee.com/ketoaicoffee" target="_blank" rel="noopener noreferrer">
+            <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" className="h-12 mx-auto" />
+          </a>
         </div>
       </section>
 
