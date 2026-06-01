@@ -91,26 +91,12 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <div className="absolute right-0 top-0 h-full w-1/2 opacity-30">
-          {/*
-            🖼️ HERO IMAGE — Replace this with your own image
-            ================================================
-            1. Save your image to: public/images/hero.jpg
-            2. Uncomment the <img> tag below
-            3. Delete the placeholder div
-            4. Commit + push
-
-            Recommended: 1200x800px, transparent PNG or dark-themed keto food photo
-            Free images: unsplash.com search "keto food" or "healthy ingredients"
-          */}
-          <div className="h-full w-full bg-gradient-to-br from-emerald-500/10 to-teal-500/10" />
-          {/*
+        <div className="absolute right-0 top-0 h-full w-1/2 opacity-25">
           <img
-            src="/images/hero.jpg"
+            src="/images/keto-foods-hero.jpg"
             alt="Keto foods"
             className="h-full w-full object-cover rounded-l-3xl"
           />
-          */}
         </div>
       </section>
 
