@@ -654,7 +654,7 @@ export default function MealPlanner() {
           <SocialShare
             title="Check out my personalized keto meal plan from KetoPlanner!"
             description="I just generated a custom 7-day keto meal plan using AI. Try it yourself!"
-            url="https://ketoai.app/#/meal-planner"
+            url="https://ketoai.app/meal-planner"
           />
         </div>
       )}

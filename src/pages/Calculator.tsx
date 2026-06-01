@@ -320,7 +320,7 @@ export default function Calculator() {
             <SocialShare
               title="I just calculated my keto macros on KetoPlanner!"
               description={`My targets: ${results.macros.calories} cal/day, ${results.macros.fat}g fat, ${results.macros.protein}g protein, ${results.macros.carbs}g carbs. BMI: ${results.bmi}.`}
-              url="https://ketoai.app/#/calculator"
+              url="https://ketoai.app/calculator"
             />
           </div>
         </div>

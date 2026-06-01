@@ -172,7 +172,7 @@ export default function Guide() {
           <Share2 className="h-5 w-5 text-emerald-600" />
           <span className="font-medium text-gray-700">Share this guide:</span>
         </div>
-        <SocialShare url="https://ketoai.app/#/guide" />
+        <SocialShare url="https://ketoai.app/guide" />
       </div>
 
       {/* Quick Links */}
