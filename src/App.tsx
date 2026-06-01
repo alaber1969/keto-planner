@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Calculator from './pages/Calculator';
 import MealPlanner from './pages/MealPlanner';
-import Progress from './pages/Progress';
+import SavedPlans from './pages/Progress';
 import Education from './pages/Education';
 import './App.css';
 
@@ -22,7 +22,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/calculator" element={<Calculator />} />
                 <Route path="/meal-planner" element={<MealPlanner />} />
-                <Route path="/progress" element={<Progress />} />
+                <Route path="/progress" element={<SavedPlans />} />
                 <Route path="/education" element={<Education />} />
               </Routes>
             </main>

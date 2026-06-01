@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Label } from '../components/ui/label';
 import { useUserData } from '../contexts/UserDataContext';
 import { generateMealPlan, getFallbackMealPlan, LLMDayPlan, LLMMeal } from '../lib/llm-service';
+import { saveMealPlan } from '../lib/meal-plan-storage';
 import { toast } from 'sonner';
 
 const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -67,6 +68,15 @@ export default function MealPlanner() {
         setMealPlans(fallback.mealPlan);
         generateShoppingList(fallback.mealPlan);
         setGenerationMode('fallback');
+        if (state.userData) {
+          saveMealPlan(fallback.mealPlan, {
+            age: state.userData.age,
+            gender: state.userData.gender,
+            weight: state.userData.weight,
+            height: state.userData.height,
+            calories: state.macroTargets!.calories,
+          }, 'fallback');
+        }
         toast.success('Sample meal plan loaded!');
         return;
       }
@@ -87,6 +97,16 @@ export default function MealPlanner() {
 
       setMealPlans(result.mealPlan);
       generateShoppingList(result.mealPlan);
+      // Auto-save to localStorage
+      if (state.userData) {
+        saveMealPlan(result.mealPlan, {
+          age: state.userData.age,
+          gender: state.userData.gender,
+          weight: state.userData.weight,
+          height: state.userData.height,
+          calories: state.macroTargets!.calories,
+        }, 'ai');
+      }
       toast.success('AI-generated meal plan ready! 🎉');
     } catch (err: any) {
       console.error('Meal plan generation error:', err);
@@ -102,6 +122,15 @@ export default function MealPlanner() {
             generateShoppingList(fallback.mealPlan);
             setGenerationMode('fallback');
             setError(null);
+            if (state.userData) {
+              saveMealPlan(fallback.mealPlan, {
+                age: state.userData.age,
+                gender: state.userData.gender,
+                weight: state.userData.weight,
+                height: state.userData.height,
+                calories: state.macroTargets!.calories,
+              }, 'fallback');
+            }
             toast.success('Sample meal plan loaded');
           },
         },

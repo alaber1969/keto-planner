@@ -1,510 +1,314 @@
 import { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { TrendingDown, TrendingUp, Target, Calendar, Plus, Scale } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Sparkles, Trash2, Calendar, Download, ChefHat, Calculator, Edit3, Check, X, BarChart3, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
 import { Badge } from '../components/ui/badge';
+import { Input } from '../components/ui/input';
 import { Alert, AlertDescription } from '../components/ui/alert';
-import { useUserData } from '../contexts/UserDataContext';
-import { calculateBMI, getBMICategory } from '../lib/calculations';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { getAllSavedPlans, deleteSavedPlan, updatePlanName, SavedMealPlan } from '../lib/meal-plan-storage';
 import { toast } from 'sonner';
 
-interface ProgressEntry {
-  date: string;
-  weight: number;
-  bodyFat?: number;
-  notes?: string;
-}
+export default function SavedPlans() {
+  const navigate = useNavigate();
+  const [plans, setPlans] = useState<SavedMealPlan[]>([]);
+  const [selectedPlan, setSelectedPlan] = useState<SavedMealPlan | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editName, setEditName] = useState('');
 
-interface MacroEntry {
-  date: string;
-  calories: number;
-  fat: number;
-  protein: number;
-  carbs: number;
-}
-
-export default function Progress() {
-  const { state } = useUserData();
-  const [progressData, setProgressData] = useState<ProgressEntry[]>([]);
-  const [macroData, setMacroData] = useState<MacroEntry[]>([]);
-  const [newWeight, setNewWeight] = useState('');
-  const [newBodyFat, setNewBodyFat] = useState('');
-  const [notes, setNotes] = useState('');
-  const [isAddingProgress, setIsAddingProgress] = useState(false);
-
-  // Load progress data from localStorage
   useEffect(() => {
-    const savedProgress = localStorage.getItem('keto-progress-data');
-    const savedMacros = localStorage.getItem('keto-macro-data');
-    
-    if (savedProgress) {
-      try {
-        setProgressData(JSON.parse(savedProgress));
-      } catch (error) {
-        console.error('Error loading progress data:', error);
-      }
-    }
-
-    if (savedMacros) {
-      try {
-        setMacroData(JSON.parse(savedMacros));
-      } catch (error) {
-        console.error('Error loading macro data:', error);
-      }
-    }
+    loadPlans();
   }, []);
 
-  // Save progress data to localStorage
-  useEffect(() => {
-    if (progressData.length > 0) {
-      localStorage.setItem('keto-progress-data', JSON.stringify(progressData));
+  const loadPlans = () => {
+    setPlans(getAllSavedPlans());
+  };
+
+  const handleDelete = (id: string) => {
+    deleteSavedPlan(id);
+    loadPlans();
+    if (selectedPlan?.id === id) setSelectedPlan(null);
+    toast.success('Plan deleted');
+  };
+
+  const handleRename = (id: string) => {
+    if (editName.trim()) {
+      updatePlanName(id, editName.trim());
+      loadPlans();
+      setEditingId(null);
+      toast.success('Plan renamed');
     }
-  }, [progressData]);
-
-  useEffect(() => {
-    if (macroData.length > 0) {
-      localStorage.setItem('keto-macro-data', JSON.stringify(macroData));
-    }
-  }, [macroData]);
-
-  const addProgressEntry = () => {
-    if (!newWeight) {
-      toast.error('Please enter your weight');
-      return;
-    }
-
-    const entry: ProgressEntry = {
-      date: new Date().toISOString().split('T')[0],
-      weight: parseFloat(newWeight),
-      bodyFat: newBodyFat ? parseFloat(newBodyFat) : undefined,
-      notes: notes || undefined,
-    };
-
-    setProgressData(prev => [...prev, entry].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()));
-    setNewWeight('');
-    setNewBodyFat('');
-    setNotes('');
-    setIsAddingProgress(false);
-    toast.success('Progress entry added successfully!');
   };
 
-  const addMacroEntry = (calories: number, fat: number, protein: number, carbs: number) => {
-    const entry: MacroEntry = {
-      date: new Date().toISOString().split('T')[0],
-      calories,
-      fat,
-      protein,
-      carbs,
-    };
-
-    setMacroData(prev => [...prev, entry].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()));
-    toast.success('Daily macros logged!');
+  const handleNewPlan = () => {
+    navigate('/meal-planner');
   };
 
-  const getWeightTrend = () => {
-    if (progressData.length < 2) return null;
-    
-    const latest = progressData[progressData.length - 1];
-    const previous = progressData[progressData.length - 2];
-    const change = latest.weight - previous.weight;
-    
-    return {
-      change: Math.abs(change),
-      direction: change < 0 ? 'down' : 'up',
-      percentage: Math.abs((change / previous.weight) * 100),
-    };
+  const downloadPlan = (plan: SavedMealPlan) => {
+    let content = 'PERSONALIZED KETO MEAL PLAN\n';
+    content += '================================\n\n';
+    content += `Plan: ${plan.name}\n`;
+    content += `Created: ${new Date(plan.savedAt).toLocaleDateString()}\n`;
+    content += `Profile: ${plan.userProfile.age}yo, ${plan.userProfile.gender}, ${plan.userProfile.weight}kg, ${plan.userProfile.height}cm\n`;
+    content += `Target: ${plan.userProfile.calories} cal/day\n\n`;
+
+    plan.mealPlan.forEach(d => {
+      content += `${d.dayName.toUpperCase()}\n`;
+      content += '-------------------\n';
+      content += `🍳 Breakfast: ${d.breakfast.name} (${d.breakfast.calories} cal)\n`;
+      content += `🥗 Lunch: ${d.lunch.name} (${d.lunch.calories} cal)\n`;
+      content += `🍽️ Dinner: ${d.dinner.name} (${d.dinner.calories} cal)\n`;
+      content += `🥜 Snack: ${d.snack.name} (${d.snack.calories} cal)\n`;
+      content += `📊 Total: ${Math.round(d.totalCalories)} cal | Fat ${Math.round(d.totalFat)}g | Protein ${Math.round(d.totalProtein)}g | Carbs ${Math.round(d.totalCarbs)}g\n\n`;
+    });
+
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `keto-plan-${plan.id.slice(0, 8)}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success('Plan downloaded!');
   };
 
-  const getCurrentBMI = () => {
-    if (!state.userData || progressData.length === 0) return null;
-    
-    const latestWeight = progressData[progressData.length - 1].weight;
-    const bmi = calculateBMI(latestWeight, state.userData.height);
-    
-    return {
-      value: Math.round(bmi * 10) / 10,
-      category: getBMICategory(bmi),
-    };
-  };
-
-  const getProgressToGoal = () => {
-    if (!state.userData || progressData.length === 0) return null;
-    
-    const startWeight = state.userData.weight;
-    const currentWeight = progressData[progressData.length - 1].weight;
-    const targetWeight = state.userData.targetWeight || startWeight - 10;
-    
-    const totalToLose = startWeight - targetWeight;
-    const lostSoFar = startWeight - currentWeight;
-    const percentage = Math.min((lostSoFar / totalToLose) * 100, 100);
-    
-    return {
-      startWeight,
-      currentWeight,
-      targetWeight,
-      lostSoFar,
-      remaining: Math.max(currentWeight - targetWeight, 0),
-      percentage: Math.max(percentage, 0),
-    };
-  };
-
-  const trend = getWeightTrend();
-  const currentBMI = getCurrentBMI();
-  const goalProgress = getProgressToGoal();
-
-  // Prepare chart data
-  const weightChartData = progressData.map(entry => ({
-    date: new Date(entry.date).toLocaleDateString(),
-    weight: entry.weight,
-  }));
-
-  const macroChartData = state.macroTargets ? [
-    { name: 'Fat', value: state.macroTargets.fat, color: '#f97316' },
-    { name: 'Protein', value: state.macroTargets.protein, color: '#ef4444' },
-    { name: 'Carbs', value: state.macroTargets.carbs, color: '#22c55e' },
-  ] : [];
+  const totalPlans = plans.length;
+  const aiPlans = plans.filter(p => p.provider === 'ai').length;
+  const latestPlan = plans[0];
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Progress Tracking
+          My Saved Meal Plans
         </h1>
-        <p className="text-lg text-gray-600">
-          Monitor your weight loss journey and stay on track with your keto goals
+        <p className="text-lg text-gray-600 mb-6">
+          Every AI-generated meal plan is saved here — browse, compare, and revisit anytime
         </p>
+
+        <Button
+          onClick={handleNewPlan}
+          size="lg"
+          className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+        >
+          <Sparkles className="mr-2 h-5 w-5" />
+          Generate New Plan
+        </Button>
       </div>
 
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Current Weight */}
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Current Weight</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {progressData.length > 0 ? `${progressData[progressData.length - 1].weight} kg` : 'No data'}
-            </div>
-            {trend && (
-              <div className={`flex items-center text-sm ${trend.direction === 'down' ? 'text-green-600' : 'text-red-600'}`}>
-                {trend.direction === 'down' ? (
-                  <TrendingDown className="h-4 w-4 mr-1" />
-                ) : (
-                  <TrendingUp className="h-4 w-4 mr-1" />
-                )}
-                {trend.change.toFixed(1)} kg ({trend.percentage.toFixed(1)}%)
-              </div>
-            )}
+      {/* Stats */}
+      {plans.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Card>
+            <CardContent className="pt-6 text-center">
+              <div className="text-3xl font-bold text-emerald-600">{totalPlans}</div>
+              <div className="text-sm text-gray-600">Saved Plans</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-6 text-center">
+              <div className="text-3xl font-bold text-blue-600">{aiPlans}</div>
+              <div className="text-sm text-gray-600">AI-Generated</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-6 text-center">
+              <div className="text-3xl font-bold text-purple-600">{totalPlans * 7}</div>
+              <div className="text-sm text-gray-600">Total Meals Saved</div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {plans.length === 0 ? (
+        /* Empty State */
+        <Card className="border-dashed border-2 border-gray-300">
+          <CardContent className="py-16 text-center">
+            <ChefHat className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">
+              No saved meal plans yet
+            </h3>
+            <p className="text-gray-500 mb-6 max-w-md mx-auto">
+              Generate your first AI-powered keto meal plan and it will automatically
+              appear here for you to revisit anytime.
+            </p>
+            <Button
+              onClick={handleNewPlan}
+              size="lg"
+              className="bg-gradient-to-r from-emerald-600 to-teal-600"
+            >
+              <Sparkles className="mr-2 h-5 w-5" />
+              Generate Your First Plan
+            </Button>
           </CardContent>
         </Card>
+      ) : (
+        <Tabs defaultValue="list" className="w-full">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="list">
+              <BarChart3 className="h-4 w-4 mr-2" />
+              All Plans
+            </TabsTrigger>
+            <TabsTrigger value="latest">
+              <Calendar className="h-4 w-4 mr-2" />
+              Latest Plan
+            </TabsTrigger>
+          </TabsList>
 
-        {/* BMI */}
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Current BMI</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {currentBMI ? currentBMI.value : 'No data'}
-            </div>
-            {currentBMI && (
-              <Badge variant={currentBMI.category === 'Normal weight' ? 'default' : 'secondary'}>
-                {currentBMI.category}
-              </Badge>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Goal Progress */}
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Goal Progress</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {goalProgress ? `${goalProgress.percentage.toFixed(0)}%` : 'No goal set'}
-            </div>
-            {goalProgress && (
-              <div className="text-sm text-gray-600">
-                {goalProgress.lostSoFar.toFixed(1)} kg lost
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Days Tracking */}
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Days Tracked</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{progressData.length}</div>
-            <div className="text-sm text-gray-600">
-              {progressData.length > 0 ? `Since ${new Date(progressData[0].date).toLocaleDateString()}` : 'Start tracking today'}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Weight Progress Chart */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center justify-between">
-              <span>Weight Progress</span>
-              <Dialog open={isAddingProgress} onOpenChange={setIsAddingProgress}>
-                <DialogTrigger asChild>
-                  <Button size="sm">
-                    <Plus className="h-4 w-4 mr-2" />
-                    Add Entry
-                  </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Add Progress Entry</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="weight">Weight (kg) *</Label>
-                      <Input
-                        id="weight"
-                        type="number"
-                        value={newWeight}
-                        onChange={(e) => setNewWeight(e.target.value)}
-                        placeholder="70.5"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="bodyFat">Body Fat % (optional)</Label>
-                      <Input
-                        id="bodyFat"
-                        type="number"
-                        value={newBodyFat}
-                        onChange={(e) => setNewBodyFat(e.target.value)}
-                        placeholder="15.0"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="notes">Notes (optional)</Label>
-                      <Input
-                        id="notes"
-                        value={notes}
-                        onChange={(e) => setNotes(e.target.value)}
-                        placeholder="Feeling great today!"
-                      />
-                    </div>
-                    <Button onClick={addProgressEntry} className="w-full">
-                      Add Entry
-                    </Button>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </CardTitle>
-            <CardDescription>Track your weight loss over time</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {weightChartData.length > 0 ? (
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={weightChartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line 
-                    type="monotone" 
-                    dataKey="weight" 
-                    stroke="#10b981" 
-                    strokeWidth={2}
-                    dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="h-300 flex items-center justify-center text-gray-500">
-                <div className="text-center">
-                  <Scale className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-                  <p>No weight data yet</p>
-                  <p className="text-sm">Add your first entry to start tracking</p>
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Macro Targets */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Daily Macro Targets</CardTitle>
-            <CardDescription>Your personalized keto macronutrient goals</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {macroChartData.length > 0 ? (
-              <div className="space-y-4">
-                <ResponsiveContainer width="100%" height={200}>
-                  <PieChart>
-                    <Pie
-                      data={macroChartData}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={40}
-                      outerRadius={80}
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      {macroChartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                  </PieChart>
-                </ResponsiveContainer>
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  {macroChartData.map((macro) => (
-                    <div key={macro.name}>
-                      <div className="text-lg font-bold" style={{ color: macro.color }}>
-                        {macro.value}g
+          {/* List View */}
+          <TabsContent value="list" className="space-y-4">
+            {plans.map((plan, idx) => (
+              <Card key={plan.id} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-5">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        {editingId === plan.id ? (
+                          <div className="flex items-center gap-2">
+                            <Input
+                              value={editName}
+                              onChange={e => setEditName(e.target.value)}
+                              className="h-8 w-64"
+                              autoFocus
+                              onKeyDown={e => {
+                                if (e.key === 'Enter') handleRename(plan.id);
+                                if (e.key === 'Escape') setEditingId(null);
+                              }}
+                            />
+                            <Button size="sm" variant="ghost" onClick={() => handleRename(plan.id)}>
+                              <Check className="h-4 w-4 text-green-600" />
+                            </Button>
+                            <Button size="sm" variant="ghost" onClick={() => setEditingId(null)}>
+                              <X className="h-4 w-4 text-red-600" />
+                            </Button>
+                          </div>
+                        ) : (
+                          <h3 className="font-semibold text-base truncate">{plan.name}</h3>
+                        )}
                       </div>
-                      <div className="text-sm text-gray-600">{macro.name}</div>
+                      <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3.5 w-3.5" />
+                          {new Date(plan.savedAt).toLocaleDateString()}
+                        </span>
+                        <Badge variant={plan.provider === 'ai' ? 'default' : 'secondary'} className="text-xs">
+                          {plan.provider === 'ai' ? '🤖 AI' : '📋 Sample'}
+                        </Badge>
+                        <span>{plan.userProfile.age}yo / {plan.userProfile.gender}</span>
+                        <span>{plan.userProfile.calories} cal/day</span>
+                        <span>{plan.mealPlan.length} days</span>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="h-200 flex items-center justify-center text-gray-500">
-                <div className="text-center">
-                  <Target className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-                  <p>Complete the calculator first</p>
-                  <p className="text-sm">Set your macro targets to see the breakdown</p>
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Goal Progress Details */}
-      {goalProgress && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Goal Progress Details</CardTitle>
-            <CardDescription>Detailed breakdown of your weight loss journey</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-blue-600">
-                    {goalProgress.startWeight} kg
-                  </div>
-                  <div className="text-sm text-gray-600">Starting Weight</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-green-600">
-                    {goalProgress.currentWeight} kg
-                  </div>
-                  <div className="text-sm text-gray-600">Current Weight</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-purple-600">
-                    {goalProgress.targetWeight} kg
-                  </div>
-                  <div className="text-sm text-gray-600">Target Weight</div>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span>Progress to Goal</span>
-                  <span>{goalProgress.percentage.toFixed(1)}%</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="bg-emerald-600 h-2 rounded-full transition-all duration-300"
-                    style={{ width: `${Math.min(goalProgress.percentage, 100)}%` }}
-                  ></div>
-                </div>
-                <div className="flex justify-between text-sm text-gray-600">
-                  <span>{goalProgress.lostSoFar.toFixed(1)} kg lost</span>
-                  <span>{goalProgress.remaining.toFixed(1)} kg remaining</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Progress History */}
-      {progressData.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Progress History</CardTitle>
-            <CardDescription>Your recent weight tracking entries</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {progressData.slice(-10).reverse().map((entry, index) => (
-                <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center space-x-4">
-                    <Calendar className="h-5 w-5 text-gray-400" />
-                    <div>
-                      <div className="font-medium">{new Date(entry.date).toLocaleDateString()}</div>
-                      {entry.notes && (
-                        <div className="text-sm text-gray-600">{entry.notes}</div>
-                      )}
+                    <div className="flex items-center gap-1 ml-4 shrink-0">
+                      <Button size="sm" variant="ghost" onClick={() => {
+                        setEditingId(plan.id);
+                        setEditName(plan.name);
+                      }}>
+                        <Edit3 className="h-4 w-4 text-gray-500" />
+                      </Button>
+                      <Button size="sm" variant="ghost" onClick={() => downloadPlan(plan)}>
+                        <Download className="h-4 w-4 text-blue-500" />
+                      </Button>
+                      <Button size="sm" variant="ghost" onClick={() => handleDelete(plan.id)}>
+                        <Trash2 className="h-4 w-4 text-red-500" />
+                      </Button>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="font-semibold">{entry.weight} kg</div>
-                    {entry.bodyFat && (
-                      <div className="text-sm text-gray-600">{entry.bodyFat}% body fat</div>
-                    )}
+
+                  {/* Mini meal preview */}
+                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 text-xs text-gray-600">
+                    {plan.mealPlan.slice(0, 4).map(d => (
+                      <div key={d.day} className="bg-gray-50 rounded p-2">
+                        <div className="font-medium text-gray-800 mb-1">{d.dayName.slice(0, 3)}</div>
+                        <div>🍳 {d.breakfast.name.slice(0, 20)}</div>
+                        <div>🥗 {d.lunch.name.slice(0, 20)}</div>
+                        <div>🍽️ {d.dinner.name.slice(0, 20)}</div>
+                      </div>
+                    ))}
                   </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+                  {plan.mealPlan.length > 4 && (
+                    <p className="text-xs text-gray-400 mt-2">+{plan.mealPlan.length - 4} more days</p>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </TabsContent>
+
+          {/* Latest Plan Detail */}
+          <TabsContent value="latest" className="space-y-6">
+            {latestPlan && (
+              <>
+                <Card className="border-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50">
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg">{latestPlan.name}</CardTitle>
+                      <div className="flex gap-1">
+                        <Button size="sm" variant="outline" onClick={() => downloadPlan(latestPlan)}>
+                          <Download className="h-4 w-4 mr-1" /> Download
+                        </Button>
+                        <Button size="sm" variant="outline" onClick={() => handleDelete(latestPlan.id)}>
+                          <Trash2 className="h-4 w-4 text-red-500" />
+                        </Button>
+                      </div>
+                    </div>
+                    <CardDescription>
+                      Created {new Date(latestPlan.savedAt).toLocaleDateString()} &middot;
+                      {latestPlan.provider === 'ai' ? ' AI Generated' : ' Sample Plan'} &middot;
+                      Target: {latestPlan.userProfile.calories} cal/day
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+
+                {/* Day-by-day breakdown */}
+                {latestPlan.mealPlan.map(day => (
+                  <Card key={day.day}>
+                    <CardHeader className="pb-2">
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-base">{day.dayName}</CardTitle>
+                        <Badge variant="outline" className="text-xs">
+                          {Math.round(day.totalCalories)} cal
+                        </Badge>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {[
+                          { meal: day.breakfast, label: '🍳 Breakfast' },
+                          { meal: day.lunch, label: '🥗 Lunch' },
+                          { meal: day.dinner, label: '🍽️ Dinner' },
+                          { meal: day.snack, label: '🥜 Snack' },
+                        ].map(({ meal, label }) => (
+                          <div key={label} className="bg-gray-50 rounded-lg p-3">
+                            <div className="text-xs text-gray-500 mb-1">{label}</div>
+                            <div className="font-medium text-sm">{meal.name}</div>
+                            <div className="text-xs text-gray-500 mt-1">
+                              {meal.calories} cal · {meal.fat}g fat · {meal.protein}g protein · {meal.carbs}g carbs
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3 flex gap-4 text-xs text-gray-500 border-t pt-3">
+                        <span>🧈 Fat: {Math.round(day.totalFat)}g</span>
+                        <span>🥩 Protein: {Math.round(day.totalProtein)}g</span>
+                        <span>🥬 Carbs: {Math.round(day.totalCarbs)}g</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </>
+            )}
+          </TabsContent>
+        </Tabs>
       )}
 
-      {/* Motivation Section */}
-      <Card className="bg-gradient-to-r from-emerald-50 to-teal-50">
-        <CardContent className="p-6">
-          <div className="text-center space-y-4">
-            <h3 className="text-xl font-bold text-gray-900">Keep Going! 💪</h3>
-            {progressData.length > 0 ? (
-              <p className="text-gray-600">
-                You've been tracking for {progressData.length} days. Consistency is key to success!
-              </p>
-            ) : (
-              <p className="text-gray-600">
-                Start tracking your progress today and watch your transformation unfold!
-              </p>
-            )}
-            <div className="flex justify-center">
-              <Dialog open={isAddingProgress} onOpenChange={setIsAddingProgress}>
-                <DialogTrigger asChild>
-                  <Button className="bg-emerald-600 hover:bg-emerald-700">
-                    <Plus className="h-4 w-4 mr-2" />
-                    Log Today's Progress
-                  </Button>
-                </DialogTrigger>
-              </Dialog>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Tips */}
-      <Alert>
-        <AlertDescription>
-          <strong>Progress Tracking Tips:</strong> Weigh yourself at the same time each day, preferably in the morning after using the bathroom and before eating. Weight can fluctuate daily due to water retention, hormones, and other factors. Focus on weekly trends rather than daily changes.
+      {/* Info */}
+      <Alert className="bg-blue-50 border-blue-200">
+        <ChefHat className="h-5 w-5 text-blue-600" />
+        <AlertDescription className="text-blue-800 text-sm">
+          <strong>Saved locally:</strong> Plans are stored in your browser (localStorage). 
+          They won't sync across devices. Generate new plans anytime — they auto-save here.
         </AlertDescription>
       </Alert>
     </div>
