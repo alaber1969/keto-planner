@@ -178,10 +178,25 @@ async function generateWithOpenAI(prompt) {
   const content = response.choices[0]?.message?.content;
   if (!content) throw new Error('Empty response from LLM');
 
-  // For providers without JSON mode, strip any markdown fences
+  // For providers without JSON mode, extract JSON more robustly
   if (!p.supportsJsonMode) {
-    const cleaned = content.replace(/```json\s*/gi, '').replace(/```\s*$/gm, '').trim();
-    return JSON.parse(cleaned);
+    // Remove markdown code fences
+    let cleaned = content.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+    // Find first { and last } to extract just the JSON object
+    const firstBrace = cleaned.indexOf('{');
+    const lastBrace = cleaned.lastIndexOf('}');
+    if (firstBrace !== -1 && lastBrace > firstBrace) {
+      cleaned = cleaned.slice(firstBrace, lastBrace + 1);
+    }
+    // Fix trailing commas
+    cleaned = cleaned.replace(/,\s*([}\]])/g, '$1');
+    try {
+      return JSON.parse(cleaned);
+    } catch (parseErr) {
+      // Log the raw content for debugging
+      console.error('JSON parse error. Raw content preview:', content.slice(0, 500));
+      throw new Error(`Failed to parse LLM response as JSON: ${parseErr.message}`);
+    }
   }
 
   return JSON.parse(content);
