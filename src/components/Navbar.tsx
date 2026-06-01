@@ -10,10 +10,10 @@ export default function Navbar() {
 
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
+    { path: '/guide', label: 'Guide', icon: Compass },
     { path: '/calculator', label: 'Calculator', icon: Calculator },
     { path: '/meal-planner', label: 'Meal Planner', icon: Utensils },
     { path: '/progress', label: 'My Plans', icon: ClipboardList },
-    { path: '/guide', label: 'Guide', icon: Compass },
     { path: '/education', label: 'Learn Keto', icon: BookOpen },
   ];
 
