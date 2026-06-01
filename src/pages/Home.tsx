@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SocialShare from '../components/SocialShare';
-import { ArrowRight, Calculator, Utensils, BookOpen, Star, Users, Target, ClipboardList, Compass, Share2 } from 'lucide-react';
+import StarRating from '../components/StarRating';
+import { ArrowRight, Calculator, Utensils, BookOpen, Target, ClipboardList, Compass, Share2, Star } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -41,19 +42,19 @@ export default function Home() {
 
   const stats = [
     {
-      icon: Users,
-      value: '10,000+',
-      label: 'Users Helped',
+      icon: Calculator,
+      value: 'Free',
+      label: 'No account required',
     },
     {
       icon: Target,
-      value: '95%',
-      label: 'Success Rate',
+      value: '100%',
+      label: 'AI-generated meal plans',
     },
     {
       icon: Star,
-      value: '4.9/5',
-      label: 'User Rating',
+      value: 'Privacy',
+      label: 'Your data stays on your device',
     },
   ];
 
@@ -192,8 +193,8 @@ export default function Home() {
           Ready to Transform Your Health?
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          Join thousands of people who have successfully achieved their weight loss goals 
-          with our personalized keto planning system.
+          Get your personalized keto meal plan in seconds — no account, no strings attached.
+          Just fill in your info and let AI do the rest.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700" asChild>
@@ -209,12 +210,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Share */}
-      <section className="text-center p-6 bg-white rounded-2xl border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">Share KetoPlanner</h3>
-        <p className="text-gray-600 mb-4 text-sm">Know someone who wants to start keto? Share this free tool with them!</p>
-        <div className="flex justify-center">
-          <SocialShare variant="row" />
+      {/* Share + Rating */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="text-center p-6 bg-white rounded-2xl border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">Share KetoPlanner</h3>
+          <p className="text-gray-600 mb-4 text-sm">Know someone who wants to start keto? Share this free tool with them!</p>
+          <div className="flex justify-center">
+            <SocialShare variant="row" />
+          </div>
+        </div>
+        <div className="p-6 bg-white rounded-2xl border border-gray-200">
+          <StarRating />
         </div>
       </section>
 
