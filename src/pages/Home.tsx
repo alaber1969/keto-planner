@@ -91,11 +91,13 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <div className="absolute right-0 top-0 h-full w-1/2 opacity-25">
+        <div className="absolute right-0 top-0 h-full w-3/5 overflow-hidden rounded-l-3xl">
+          {/* Gradient blend on the left edge so it fades into the green hero */}
+          <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-emerald-600 to-transparent z-10" />
           <img
             src="/images/keto-foods-hero.jpg"
             alt="Keto foods"
-            className="h-full w-full object-cover rounded-l-3xl"
+            className="h-full w-full object-cover object-center scale-125"
           />
         </div>
       </section>
