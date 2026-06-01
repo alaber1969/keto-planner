@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calculator, Utensils, BookOpen, Star, Users, Target, ClipboardList } from 'lucide-react';
+import { ArrowRight, Calculator, Utensils, BookOpen, Star, Users, Target, ClipboardList, Compass } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
@@ -23,6 +23,12 @@ export default function Home() {
       title: 'Saved Meal Plans',
       description: 'Browse, compare, and re-download all your AI-generated meal plans.',
       link: '/progress',
+    },
+    {
+      icon: Compass,
+      title: 'How-to Guide',
+      description: 'Step-by-step guide to using the calculator, AI meal plans, and tracking.',
+      link: '/guide',
     },
     {
       icon: BookOpen,
