@@ -79,7 +79,10 @@ export async function generateMealPlan(userData: LLMUserData): Promise<LLMRespon
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(userData),
+      body: JSON.stringify({
+        ...userData,
+        _hp: '', // honeypot: must be empty for real users (bots auto-fill)
+      }),
       signal: controller.signal,
     });
 

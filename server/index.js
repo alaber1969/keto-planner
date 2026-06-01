@@ -10,20 +10,54 @@ const OpenAI = require('openai');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// --- Anti-abuse: daily request tracker (in-memory) ---
+const dailyUsage = new Map();
+
+function getDailyKey(ip) {
+  const today = new Date().toISOString().slice(0, 10);
+  return `${today}:${ip}`;
+}
+
+setInterval(() => {
+  // Clear old entries every hour
+  const today = new Date().toISOString().slice(0, 10);
+  for (const [key] of dailyUsage) {
+    if (!key.startsWith(today)) dailyUsage.delete(key);
+  }
+}, 60 * 60 * 1000);
+
 // --- Middleware ---
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*',
+  origin: process.env.NODE_ENV === 'production'
+    ? ['https://keto-planner-production.up.railway.app', 'https://keto-planner.netlify.app']
+    : '*',
   methods: ['POST', 'GET'],
 }));
 app.use(express.json({ limit: '10mb' }));
 
-// Rate limiting to prevent abuse
-const apiLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: parseInt(process.env.RATE_LIMIT_MAX) || 10,
-  message: { error: 'Too many requests, please try again later.' },
+// IP extraction helper
+function getClientIP(req) {
+  return req.headers['x-forwarded-for']?.split(',')[0]?.trim()
+    || req.ip
+    || req.connection?.remoteAddress
+    || 'unknown';
+}
+
+// Rate limiting per minute (tight)
+const perMinuteLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: parseInt(process.env.RATE_LIMIT_PER_MIN) || 5,
+  keyGenerator: getClientIP,
+  message: { error: 'Too many requests. Please wait a moment before generating another meal plan.' },
 });
-app.use('/api/', apiLimiter);
+
+// Daily limit per IP
+const dailyLimiter = rateLimit({
+  windowMs: 24 * 60 * 60 * 1000,
+  max: parseInt(process.env.RATE_LIMIT_DAILY) || 30,
+  keyGenerator: getClientIP,
+  message: { error: 'Daily limit reached. Come back tomorrow for more meal plans!' },
+});
 
 // --- Provider Configuration ---
 const PROVIDERS = {
@@ -294,9 +328,24 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.post('/api/generate-meal-plan', async (req, res) => {
+app.post('/api/generate-meal-plan', perMinuteLimiter, dailyLimiter, async (req, res) => {
   try {
     const userData = req.body;
+
+        // Anti-bot checks
+    // 1. Honeypot: hidden field that bots auto-fill
+    if (req.body._hp && req.body._hp !== '') {
+      console.warn(`[${new Date().toISOString()}] Honeypot triggered from IP: ${getClientIP(req)}`);
+      return res.json({ mealPlan: [] });
+    }
+
+    // 2. Block known bot user-agents
+    const ua = (req.headers['user-agent'] || '').toLowerCase();
+    const botPatterns = ['curl', 'wget', 'python-requests', 'go-http-client', 'java', 'scrapy', 'axios', 'aiohttp', 'httpx', 'okhttp'];
+    if (botPatterns.some(p => ua.includes(p))) {
+      console.warn(`[${new Date().toISOString()}] Bot UA blocked from IP: ${getClientIP(req)}`);
+      return res.status(403).json({ error: 'Not allowed' });
+    }
 
     // Validate required fields
     const requiredFields = ['age', 'gender', 'weight', 'height', 'activityLevel', 'goalWeightLoss', 'macros'];
