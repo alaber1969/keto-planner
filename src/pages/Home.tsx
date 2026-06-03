@@ -70,7 +70,8 @@ export default function Home() {
             className="h-full w-full object-cover object-center scale-125"
           />
           {/* Dark overlay so text is always readable */}
-
+  <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/60 to-emerald-900/70" />
+        </div>
         {/* Text content sits on top with its own dark backdrop */}
         <div className="relative z-10 px-8 md:px-16 py-12 md:py-20">
           <div className="max-w-2xl bg-emerald-900/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 -ml-2 md:-ml-4">
