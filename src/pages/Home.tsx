@@ -62,9 +62,13 @@ export default function Home() {
     <div className="space-y-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-600 p-8 md:p-16 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
+        {/* Dark overlay behind entire hero for baseline readability */}
+        <div className="absolute inset-0 bg-black/30 md:bg-black/20" />
+        {/* Extra solid backdrop behind text so it never bleeds into the image */}
+        <div className="absolute inset-y-0 left-0 w-full md:w-3/5 bg-gradient-to-r from-emerald-600/90 via-emerald-600/70 to-transparent z-[1]" />
+
         <div className="relative z-10 max-w-4xl">
-          <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30">
+          <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm">
             ✨ Science-Based Keto Planning
           </Badge>
           <h1 className="mb-6 text-4xl md:text-6xl font-bold leading-tight">
@@ -74,8 +78,8 @@ export default function Home() {
             </span>
             Starts Here
           </h1>
-          <p className="mb-8 text-lg md:text-xl text-emerald-50 max-w-2xl">
-            Transform your health with our comprehensive keto diet planning platform. 
+          <p className="mb-8 text-lg md:text-xl text-emerald-50 max-w-2xl drop-shadow-sm">
+            Transform your health with our comprehensive keto diet planning platform.
             Get personalized meal plans, macro calculations, and expert guidance for sustainable weight loss.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
