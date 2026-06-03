@@ -61,49 +61,52 @@ export default function Home() {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-600 p-8 md:p-16 text-white">
-        {/* Dark overlay behind entire hero for baseline readability */}
-        <div className="absolute inset-0 bg-black/30 md:bg-black/20" />
-        {/* Extra solid backdrop behind text so it never bleeds into the image */}
-        <div className="absolute inset-y-0 left-0 w-full md:w-3/5 bg-gradient-to-r from-emerald-600/90 via-emerald-600/70 to-transparent z-[1]" />
-
-        <div className="relative z-10 max-w-4xl">
-          <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm">
-            ✨ Science-Based Keto Planning
-          </Badge>
-          <h1 className="mb-6 text-4xl md:text-6xl font-bold leading-tight">
-            Your Personalized
-            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-              Keto Journey
-            </span>
-            Starts Here
-          </h1>
-          <p className="mb-8 text-lg md:text-xl text-emerald-50 max-w-2xl drop-shadow-sm">
-            Transform your health with our comprehensive keto diet planning platform.
-            Get personalized meal plans, macro calculations, and expert guidance for sustainable weight loss.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50" asChild>
-              <Link to="/calculator" className="flex items-center">
-                Start Planning <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-emerald-200 bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm" asChild>
-              <Link to="/education">
-                Learn About Keto
-              </Link>
-            </Button>
-          </div>
-        </div>
-        <div className="absolute right-0 top-0 h-full w-3/5 overflow-hidden rounded-l-3xl">
-          {/* Gradient blend on the left edge so it fades into the green hero */}
-          <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-emerald-600 to-transparent z-10" />
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-600 p-0 text-white">
+        {/* Image covers the full hero */}
+        <div className="absolute inset-0">
           <img
             src="/images/keto-foods-hero.jpg"
-            alt="Keto foods"
+            alt=""
             className="h-full w-full object-cover object-center scale-125"
           />
+          {/* Dark overlay so text is always readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/60 to-emerald-900/70" />
         </div>
+
+        {/* Text content sits on top with its own dark backdrop */}
+        <div className="relative z-10 px-8 md:px-16 py-12 md:py-20">
+          <div className="max-w-2xl bg-emerald-900/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 -ml-2 md:-ml-4">
+            <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm">
+              ✨ Science-Based Keto Planning
+            </Badge>
+            <h1 className="mb-6 text-4xl md:text-6xl font-bold leading-tight text-white">
+              Your Personalized
+              <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                Keto Journey
+              </span>
+              Starts Here
+            </h1>
+            <p className="mb-8 text-lg md:text-xl text-emerald-50/90 max-w-xl">
+              Transform your health with our comprehensive keto diet planning platform.
+              Get personalized meal plans, macro calculations, and expert guidance for sustainable weight loss.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50 shadow-lg" asChild>
+                <Link to="/calculator" className="flex items-center">
+                  Start Planning <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="border-white/40 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm shadow-lg" asChild>
+                <Link to="/education">
+                  Learn About Keto
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative gradient on the right side of the hero */}
+        <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-emerald-600/20 to-transparent pointer-events-none" />
       </section>
 
       {/* Stats Section */}
