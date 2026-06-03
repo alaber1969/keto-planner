@@ -58,7 +58,7 @@ export default function Home() {
     },
   ];
 
-  return (
+ return (
     <div className="space-y-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-600 p-0 text-white">
@@ -69,12 +69,11 @@ export default function Home() {
             alt=""
             className="h-full w-full object-cover object-center scale-125"
           />
-          {/* Dark overlay so text is always readable */}
-  <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/60 to-emerald-900/70" />
+          {/* REMOVED dark overlay - no more gradient overlay */}
         </div>
-        {/* Text content sits on top with its own dark backdrop */}
+        {/* Text content sits on top with gray indented background */}
         <div className="relative z-10 px-8 md:px-16 py-12 md:py-20">
-          <div className="max-w-2xl bg-emerald-900/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 -ml-2 md:-ml-4">
+          <div className="max-w-2xl bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 -ml-2 md:-ml-4 shadow-xl">
             <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm">
               ✨ Science-Based Keto Planning
             </Badge>
@@ -85,7 +84,7 @@ export default function Home() {
               </span>
               Starts Here
             </h1>
-            <p className="mb-8 text-lg md:text-xl text-emerald-50/90 max-w-xl">
+            <p className="mb-8 text-lg md:text-xl text-gray-100 max-w-xl">
               Transform your health with our comprehensive keto diet planning platform.
               Get personalized meal plans, macro calculations, and expert guidance for sustainable weight loss.
             </p>
