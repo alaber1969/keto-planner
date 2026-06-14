@@ -46,6 +46,11 @@ export default function MealPlanner() {
 
   const selectedPlan = mealPlans.find(plan => plan.day === selectedDay);
 
+  // Set page title
+  useEffect(() => {
+    document.title = 'AI Keto Meal Planner — Generate Custom 7-Day Diet Plans | KetoPlanner';
+  }, []);
+
   // Auto-generate when macro targets are available and no plan exists
   useEffect(() => {
     if (state.macroTargets && mealPlans.length === 0 && !loading) {

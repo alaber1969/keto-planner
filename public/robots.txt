@@ -1,12 +1,12 @@
 User-agent: *
 Allow: /
-Allow: /#/calculator
-Allow: /#/meal-planner
-Allow: /#/guide
-Allow: /#/education
-Allow: /#/progress
-Disallow: /#/privacy
-Disallow: /#/terms
-Disallow: /#/disclaimer
+Allow: /calculator
+Allow: /meal-planner
+Allow: /guide
+Allow: /education
+Allow: /progress
+Disallow: /privacy
+Disallow: /terms
+Disallow: /disclaimer
 
 Sitemap: https://ketoai.app/sitemap.xml

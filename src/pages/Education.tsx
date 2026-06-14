@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BookOpen, ChevronDown, ChevronRight, AlertTriangle, CheckCircle, XCircle, Info } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
@@ -8,6 +8,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
 
 export default function Education() {
   const [activeSection, setActiveSection] = useState('basics');
+
+  useEffect(() => {
+    document.title = 'Keto Diet Education — Learn Ketosis, Macros & Safe Weight Loss | KetoPlanner';
+  }, []);
 
   const ketoFoods = {
     allowed: [

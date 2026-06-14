@@ -13,6 +13,10 @@ import { toast } from 'sonner';
 export default function SavedPlans() {
   const navigate = useNavigate();
   const [plans, setPlans] = useState<SavedMealPlan[]>([]);
+
+  useEffect(() => {
+    document.title = 'My Saved Keto Meal Plans — Browse & Compare | KetoPlanner';
+  }, []);
   const [selectedPlan, setSelectedPlan] = useState<SavedMealPlan | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState('');

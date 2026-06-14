@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Printer, Download, ArrowRight, Sparkles, Calculator, Utensils, ClipboardList, BookOpen, AlertTriangle, Share2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -77,6 +77,10 @@ const steps = [
 
 export default function Guide() {
   const printRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.title = 'How to Use KetoPlanner — Complete Guide to Keto Diet Planning | KetoPlanner';
+  }, []);
 
   const handlePrint = () => {
     window.print();

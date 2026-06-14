@@ -29,6 +29,7 @@ export default function Footer() {
               <li><Link to="/meal-planner" className="hover:text-emerald-600 transition-colors">Meal Planner</Link></li>
               <li><Link to="/progress" className="hover:text-emerald-600 transition-colors">My Plans</Link></li>
               <li><Link to="/guide" className="hover:text-emerald-600 transition-colors">Guide</Link></li>
+              <li><Link to="/blog" className="hover:text-emerald-600 transition-colors">Blog</Link></li>
               <li><Link to="/education" className="hover:text-emerald-600 transition-colors">Learn Keto</Link></li>
             </ul>
           </div>

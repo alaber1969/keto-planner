@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Calculator, Home, Utensils, BookOpen, ChefHat, ClipboardList, Compass, Menu, X } from 'lucide-react';
+import { Calculator, Home, Utensils, BookOpen, ChefHat, ClipboardList, Compass, Menu, X, Newspaper } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '../lib/utils';
 
@@ -14,6 +14,7 @@ export default function Navbar() {
     { path: '/calculator', label: 'Calculator', icon: Calculator },
     { path: '/meal-planner', label: 'Meal Planner', icon: Utensils },
     { path: '/progress', label: 'My Plans', icon: ClipboardList },
+    { path: '/blog', label: 'Blog', icon: Newspaper },
     { path: '/education', label: 'Learn Keto', icon: BookOpen },
   ];
 

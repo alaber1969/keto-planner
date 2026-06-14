@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -46,6 +46,10 @@ export default function Calculator() {
   const [results, setResults] = useState<any>(null);
   const { setUserData, setMacroTargets, setWeightLossProjection } = useUserData();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = 'Free Keto Macro Calculator — BMR, TDEE & BMI | KetoPlanner';
+  }, []);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),

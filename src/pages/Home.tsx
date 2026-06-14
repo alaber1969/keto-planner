@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SocialShare from '../components/SocialShare';
 import StarRating from '../components/StarRating';
@@ -7,6 +8,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Badge } from '../components/ui/badge';
 
 export default function Home() {
+  useEffect(() => {
+    document.title = 'KetoPlanner — AI-Powered Keto Diet Calculator & Meal Planner';
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', 'Get your personalized keto macro calculations and AI-generated 7-day meal plan. Free keto calculator for BMR, TDEE, BMI, and custom recipes.');
+  }, []);
+
   const features = [
     {
       icon: Calculator,

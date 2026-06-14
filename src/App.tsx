@@ -12,6 +12,8 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Disclaimer from './pages/Disclaimer';
 import Guide from './pages/Guide';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -33,6 +35,8 @@ function App() {
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/disclaimer" element={<Disclaimer />} />
                 <Route path="/guide" element={<Guide />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
               </Routes>
             </main>
             <Footer />
