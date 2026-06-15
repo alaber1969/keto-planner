@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './components/theme-provider';
 import { Toaster } from './components/ui/sonner';
 import { UserDataProvider } from './contexts/UserDataContext';
@@ -17,11 +18,22 @@ import BlogPost from './pages/BlogPost';
 import Footer from './components/Footer';
 import './App.css';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="keto-planner-theme">
       <UserDataProvider>
         <Router>
+          <ScrollToTop />
           <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
             <Navbar />
             <main className="container mx-auto px-4 py-8">
