@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Calculator, Home, Utensils, BookOpen, ChefHat, ClipboardList, Compass, Menu, X, Newspaper } from 'lucide-react';
+import { Calculator, Home, Utensils, BookOpen, ClipboardList, Compass, Menu, X, Newspaper } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '../lib/utils';
 
@@ -25,7 +25,16 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2" onClick={closeMobile}>
-            <ChefHat className="h-8 w-8 text-emerald-600" />
+            <svg className="h-8 w-8" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="navLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#059669"/>
+                  <stop offset="100%" stop-color="#0d9488"/>
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="48" fill="url(#navLogo)"/>
+              <text x="50" y="62" font-family="Arial,sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="white">K</text>
+            </svg>
             <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
               KetoPlanner
             </span>
