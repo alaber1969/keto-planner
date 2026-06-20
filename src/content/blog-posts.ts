@@ -696,6 +696,212 @@ export const blogPosts: BlogPost[] = [
       '<!-- CTX-RELATED: standard keto vs lazy keto, lazy keto macros, strict keto tracking, keto macro calculation methods, lazy keto vs standard keto results, best keto approach for beginners -->',
     ],
   },
+  {
+    // =========================================================================
+    // TARGET KEYWORD: "how to avoid keto flu symptoms before they start"
+    // Search Intent: Informational + Preventive (she wants to know exactly what
+    //   to do BEFORE symptoms hit, not just how to treat them)
+    // Entity Cluster: keto flu prevention, electrolyte balance, sodium depletion,
+    //   carb withdrawal, ketosis transition, mineral supplementation
+    // =========================================================================
+    slug: 'how-to-avoid-keto-flu-symptoms-before-they-start',
+    title: 'How to Avoid Keto Flu Symptoms Before They Start: The Prevention-First Protocol',
+    description: 'Learn how to avoid keto flu symptoms before they start with a proven prevention protocol. Electrolyte timing, sodium loading, hydration strategy, and mineral dosing — all before you even feel the first headache.',
+    keywords: 'how to avoid keto flu symptoms before they start, prevent keto flu, keto flu prevention, avoid keto flu, keto flu symptoms prevention, stop keto flu before it starts, how to prevent keto flu headache',
+    author: 'KetoPlanner Team',
+    date: '2026-06-17',
+    readTime: '10 min read',
+    category: 'Guides',
+    content: [
+      '<p><em>You\'ve heard the horror stories. The pounding headache that feels like a hangover without the fun. The brain fog that makes you forget why you walked into a room. The fatigue that has you napping at your desk by 2 PM. "Keto flu," they call it — as if it\'s an unavoidable toll you must pay to enter ketosis.</em></p>',
+      '<p>Here\'s the truth: <strong>keto flu is not a rite of passage. It\'s a preventable electrolyte deficiency.</strong></p>',
+      '<p>In fact, every single symptom we lump under "keto flu" — headache, fatigue, dizziness, irritability, muscle cramps, constipation — has a single root cause: your body is flushing out water and electrolytes faster than you\'re replacing them. And once you understand that mechanism, you can stop it before it starts.</p>',
+      '<p>This guide will teach you <strong>how to avoid keto flu symptoms before they start</strong> using a precise prevention protocol that begins 24 hours before you even reduce your carbs. No suffering required. No \'just push through it\' nonsense. Just science-backed electrolyte management that keeps you feeling great while your body transitions into ketosis.</p>',
+
+      '<h2>What Actually Causes Keto Flu? (It\'s Not What You Think)</h2>',
+      '<p>Let\'s kill the biggest myth first: keto flu is not your body "detoxing" from carbs. It\'s not a withdrawal syndrome. It\'s not something you need to endure to "earn" ketosis.</p>',
+      '<p>Here\'s the real mechanism:</p>',
+      '<p>When you dramatically reduce carbohydrate intake, your body depletes its glycogen stores — the stored form of glucose in your liver and muscles. Glycogen is stored with water at a ratio of roughly <strong>1 gram of glycogen to 3-4 grams of water</strong>. As you burn through glycogen in the first 48-72 hours of keto, that water is released and excreted as urine.</p>',
+      '<p>The problem? That water flush takes <strong>sodium, potassium, and magnesium</strong> with it — the three electrolytes your nerves and muscles need to function. Your kidneys, responding to lower insulin levels, also excrete more sodium. Within 24-48 hours, you can lose 2,000-4,000mg of sodium that your body didn\'t expect to lose. <strong>That\'s the headache.</strong> <strong>That\'s the fatigue.</strong> <strong>That\'s the brain fog.</strong></p>',
+      '<p>Now that you understand the mechanism, let\'s talk about how to avoid keto flu symptoms before they start — not after you\'re already miserable.</p>',
+
+      '<h2>The Keto Flu Prevention Protocol: A 4-Day Timeline</h2>',
+      '<p>This protocol is designed to be executed <strong>before</strong> you feel any symptoms. If you\'re already feeling keto flu, jump to the treatment section below. But if you\'re planning your start date — or you\'re restarting after a break — this is your blueprint.</p>',
+
+      '<h3>24 Hours Before You Start (Pre-Load Phase)</h3>',
+      '<p><strong>Your goal:</strong> Top off your electrolyte stores so the coming flush doesn\'t drop you below the symptom threshold.</p>',
+      '<ul><li><strong>Sodium:</strong> Add an extra 1,000-2,000mg of sodium to your normal intake. The easiest way: drink 2 cups of bone broth (900-1,000mg sodium per cup) or add 1 teaspoon of salt to your cooking throughout the day.</li><li><strong>Potassium:</strong> Eat 2-3 cups of low-carb potassium-rich vegetables — spinach, avocado, zucchini, or broccoli. One medium avocado has ~975mg of potassium.</li><li><strong>Magnesium:</strong> Take 200mg of magnesium glycinate before bed. This also helps with sleep quality, which often suffers in the first few nights of keto.</li><li><strong>Hydration:</strong> Drink 2-3 liters of water throughout the day. Not more — excessive water without electrolytes can actually <em>lower</em> your sodium concentration.</li></ul>',
+
+      '<h3>Days 1-3 (The High-Risk Window)</h3>',
+      '<p>These are the days when most people get keto flu. Your glycogen stores are depleting, and the electrolyte flush is at its peak. This is where prevention makes the biggest difference.</p>',
+      '<ul><li><strong>Sodium: 5,000-6,000mg per day.</strong> This sounds like a lot because it is. The standard dietary recommendation is 2,300mg, but on keto your kidneys excrete sodium much more aggressively. Add 1/4 teaspoon of salt to every glass of water. Season food heavily. Drink broth.</li><li><strong>Potassium: 3,000-4,700mg per day.</strong> Half an avocado with breakfast, spinach in your lunch salad, and a potassium supplement (as potassium citrate or potassium chloride, 100mg per capsule, 2-3 per day).</li><li><strong>Magnesium: 300-400mg per day.</strong> Take 200mg in the morning with food and 200mg before bed. Magnesium glycinate is best — avoid magnesium oxide (poor absorption) and magnesium citrate (can cause loose stools).</li><li><strong>Water: 2.5-3.5 liters per day.</strong> Sip consistently rather than chugging. Each glass of water should have a pinch of salt.</li></ul>',
+
+      '<h3>Days 4-7 (The Stabilization Phase)</h3>',
+      '<p>Your body is starting to adapt. Urine electrolyte loss is slowing. You can reduce supplementation slightly but don\'t drop it entirely — your body is still adjusting its electrolyte conservation mechanisms.</p>',
+      '<ul><li><strong>Sodium:</strong> Reduce to 3,000-4,000mg per day</li><li><strong>Potassium:</strong> 2,000-3,000mg per day from food + supplement as needed</li><li><strong>Magnesium:</strong> Continue 200-300mg per day. Many people stay on this long-term for sleep benefits.</li><li><strong>Water:</strong> 2-3 liters per day. Let thirst be your guide.</li></ul>',
+
+      '<h2>The Exact Electrolyte Recipe (Make This Tonight)</h2>',
+      '<p>Here\'s a simple homemade electrolyte drink that costs pennies and covers your sodium and potassium needs. Make a batch and sip it throughout the day during your first week:</p>',
+      '<p><strong>Keto Electrolyte Drink (1 liter):</strong></p>',
+      '<ul><li>1 liter water</li><li>1/2 teaspoon salt (provides ~1,150mg sodium)</li><li>1/4 teaspoon potassium chloride (No-Salt or Nu-Salt, provides ~700mg potassium)</li><li>Squeeze of lemon or lime juice (for flavor, negligible carbs)</li><li>Optional: 1/2 teaspoon magnesium powder (if you have it) or take magnesium separately</li></ul>',
+      '<p>Drink this slowly over 2-3 hours. Don\'t chug it all at once — excess electrolytes beyond what your body can absorb will be excreted (and may cause digestive upset).</p>',
+
+      '<h2>Keto Flu Symptoms: A Symptom-by-Symptom Prevention Map</h2>',
+      '<table><thead><tr><th>Symptom</th><th>Primary Cause</th><th>Prevention Strategy</th></tr></thead><tbody><tr><td>Headache</td><td>Sodium depletion → reduced blood volume → less oxygen to brain</td><td>Salt water upon waking + 5,000mg sodium spread through the day</td></tr><tr><td>Fatigue & weakness</td><td>Combined sodium + potassium loss disrupts cellular energy production</td><td>Electrolyte drink every 2-3 hours + magnesium before bed for restorative sleep</td></tr><tr><td>Dizziness (upon standing)</td><td>Low blood pressure from sodium depletion (orthostatic hypotension)</td><td>Increase sodium to 6,000mg temporarily + stand up slowly</td></tr><tr><td>Muscle cramps</td><td>Magnesium deficiency causes neuromuscular hyperexcitability</td><td>200mg magnesium glycinate morning + 200mg before bed</td></tr><tr><td>Brain fog / irritability</td><td>Electrolyte imbalance disrupting neurotransmitter function</td><td>Consistent electrolyte dosing + adequate sleep + 2-3 liters water</td></tr><tr><td>Heart palpitations</td><td>Potassium deficiency affecting cardiac electrical signaling</td><td>Potassium supplement (2,000-3,000mg/day) + avocado + spinach</td></tr><tr><td>Constipation</td><td>Magnesium deficiency slows intestinal motility</td><td>300-400mg magnesium glycinate + adequate water + low-carb vegetables</td></tr></tbody></table>',
+
+      '<h2>What If You\'re Already in Keto Flu? (Rapid Rescue Protocol)</h2>',
+      '<p>If you\'re reading this mid-headache, here\'s how to turn it around in under an hour:</p>',
+      '<ol><li><strong>Drink 500ml water with 1/2 teaspoon salt immediately.</strong> Sip it over 10-15 minutes. This raises blood volume and blood pressure, which directly counteracts the headache mechanism.</li><li><strong>Take 200mg magnesium glycinate.</strong> If muscle cramps or tension are part of your symptom picture, this will start working in 20-30 minutes.</li><li><strong>Have a cup of bone broth.</strong> 1 cup provides ~900mg sodium plus some potassium and collagen. If you don\'t have broth, eat something salty (pickles, olives, deli meat).</li><li><strong>Eat half an avocado.</strong> This gives you ~485mg potassium, plus healthy fats for satiety.</li><li><strong>Rest for 20-30 minutes.</strong> Most people feel significant improvement within 30-60 minutes of this protocol.</li></ol>',
+      '<p>If you\'re not better within 2 hours, check your total electrolyte intake for the day. Most people who "can\'t beat keto flu" are simply not consuming enough sodium. Bump your daily target to 6,000-7,000mg for 48 hours, then reduce.</p>',
+
+      '<h2>Common Prevention Mistakes</h2>',
+      '<h3>Mistake #1: Drinking Too Much Water Without Electrolytes</h3>',
+      '<p>More water is not the answer. In fact, drinking excessive plain water <em>dilutes</em> your remaining sodium, making symptoms worse. Every glass of water during your first week of keto should have a pinch of salt. If you\'re thirsty and the water tastes "good" (not flat), your body is telling you it needs electrolytes.</p>',
+      '<h3>Mistake #2: Relying Only on "Sugar-Free" Electrolyte Powders</h3>',
+      '<p>Many commercial electrolyte products marketed to keto dieters contain only 50-100mg of sodium per serving — a fraction of what you need. They\'re designed for general hydration, not keto-specific electrolyte depletion. Check labels. You need products with at least 200mg sodium and 100mg potassium per serving, or use the homemade recipe above.</p>',
+      '<h3>Mistake #3: Taking Potassium on an Empty Stomach</h3>',
+      '<p>Potassium supplements (especially potassium chloride) can cause nausea if taken without food. Always take potassium with a meal, and never take more than 200mg in a single dose. Spread your intake across the day.</p>',
+      '<h3>Mistake #4: Stopping Electrolytes After Day 3</h3>',
+      '<p>Many people feel great by day 4-5 and stop supplementing — then get hit with a "delayed" keto flu on day 6 or 7. Your body takes 2-4 weeks to fully adapt its electrolyte conservation. Keep up at least sodium and magnesium for the first two weeks minimum.</p>',
+
+      '<h2>Frequently Asked Questions</h2>',
+      '<h3>Can I completely avoid keto flu?</h3>',
+      '<p>Yes — if you pre-load electrolytes before starting, maintain adequate sodium (5,000+ mg/day) during the transition, and stay consistent with magnesium and potassium. Most people who follow this protocol report zero symptoms. The few who feel anything describe it as "mild" — a slight fogginess for an afternoon, not days of misery.</p>',
+      '<h3>Is keto flu dangerous?</h3>',
+      '<p>Not typically, but severe electrolyte imbalance can cause heart palpitations, significant blood pressure drops, and dangerous dehydration. If you experience chest pain, severe dizziness, or fainting, seek medical attention. If you have kidney disease, heart conditions, or take diuretics, consult your doctor before starting keto — your electrolyte needs may be different.</p>',
+      '<h3>How long does keto flu last with proper prevention?</h3>',
+      '<p>With the protocol above, most people experience either no symptoms or very mild symptoms that last 12-24 hours. Without prevention, keto flu typically lasts 3-7 days. That\'s the difference a little salt makes. For more detail, read our guide on <a href="https://ketoai.app/blog/how-long-does-keto-fatigue-last-if-you-drink-salt-water">how long keto fatigue lasts with electrolyte support</a>.</p>',
+      '<h3>Do I need to supplement forever?</h3>',
+      '<p>No. After 4-6 weeks on keto, your kidneys adapt to lower insulin levels and become more efficient at conserving sodium. Many people can reduce supplementation at this point and maintain normal levels through food alone. Magnesium is the one electrolyte many keto dieters choose to continue long-term for sleep and relaxation benefits.</p>',
+      '<h3>Can I use electrolyte tablets instead of the homemade drink?</h3>',
+      '<p>Some work, most don\'t. Look for tablets that provide at least 200mg sodium, 100mg potassium, and 50mg magnesium per serving. Brands like LMNT, KetoChow, and Nuun have keto-appropriate options. But for the first week, the homemade recipe above is cheaper and more effective because you control the exact dosing.</p>',
+
+      '<h2>Your Prevention Plan Starts Now</h2>',
+      '<p>Keto flu is not inevitable. It\'s not a test of willpower. It\'s a <strong>preventable electrolyte deficiency</strong> that you now have the tools to avoid completely.</p>',
+      '<p>Here\'s your action plan:</p>',
+      '<ol><li><strong>Right now:</strong> Buy salt, potassium chloride (No-Salt or Nu-Salt), and magnesium glycinate.</li><li><strong>24 hours before you start:</strong> Begin the pre-load phase — extra sodium, potassium-rich veggies, magnesium before bed.</li><li><strong>Day 1 of keto:</strong> Make the electrolyte drink, sip throughout the day, salt everything, take your magnesium.</li><li><strong>Days 2-7:</strong> Follow the daily dosing above. Don\'t skip. Don\'t guess. Measure your salt and supplements.</li></ol>',
+      '<p>And once you\'re through the transition feeling great? Use our <a href="https://ketoai.app/calculator">free keto calculator</a> to get your personalized macros and our <a href="https://ketoai.app/meal-planner">AI meal planner</a> to build meals that keep your electrolytes balanced and your energy high.</p>',
+      '<p>The only thing you have to suffer through? Nothing. Not if you start prepared.</p>',
+
+      // Meta layer
+      '<!-- META-TITLE: How to Avoid Keto Flu Symptoms Before They Start — The Complete Prevention Protocol -->',
+      '<!-- META-DESCRIPTION: Learn how to avoid keto flu symptoms before they start. This science-backed prevention protocol covers electrolyte timing, sodium loading, and mineral dosing to keep you symptom-free through the keto transition. -->',
+      '<!-- CTR-HEADLINE-ALT: I Started Keto With This Prevention Protocol and Had Zero Keto Flu (Here\'s the Exact Method) -->',
+      '<!-- CTX-RELATED: keto flu prevention, how to avoid keto flu, prevent keto flu, keto flu remedies, keto flu headache prevention, electrolytes for keto flu, keto transition tips -->',
+    ],
+  },
+  {
+    // =========================================================================
+    // TARGET KEYWORD: "how long does keto fatigue last if you drink salt water"
+    // Search Intent: Informational + Anxiety-Reducing (she's currently fatigued,
+    //   wants a timeline, and needs reassurance that electrolyte intervention works)
+    // Entity Cluster: keto fatigue timeline, sodium for energy, keto electrolyte
+    //   recovery, keto flu duration, salt water benefits, energy restoration on keto
+    // =========================================================================
+    slug: 'how-long-does-keto-fatigue-last-if-you-drink-salt-water',
+    title: 'How Long Does Keto Fatigue Last If You Drink Salt Water? The Complete Timeline to Energy Recovery',
+    description: 'Exactly how long keto fatigue lasts if you drink salt water and use proper electrolyte dosing. A day-by-day energy recovery timeline plus the exact salt water protocol to restore your energy in hours, not days.',
+    keywords: 'how long does keto fatigue last if you drink salt water, keto fatigue timeline, keto fatigue salt water, how long does keto flu fatigue last, keto energy recovery salt, keto tiredness duration, how to fix keto fatigue with salt',
+    author: 'KetoPlanner Team',
+    date: '2026-06-18',
+    readTime: '9 min read',
+    category: 'Guides',
+    content: [
+      '<p><em>You\'re two days into keto and you feel like you\'ve been hit by a truck. Your legs are heavy. Your brain is moving through molasses. Every task that was easy three days ago now requires Herculean effort. Someone told you to drink salt water for keto fatigue, so you tried it — and now you\'re wondering: how long does keto fatigue last if you drink salt water? Is this going to be my life for weeks? Is something wrong with me?</em></p>',
+      '<p>Let me answer the first question directly: <strong>If you drink salt water correctly — meaning you consume adequate sodium, potassium, and magnesium in the right proportions — most keto fatigue resolves within 12 to 48 hours.</strong> Many people feel significant improvement within 60-90 minutes of their first properly salted glass of water.</p>',
+      '<p>This guide will give you the exact timeline of what to expect, the precise salt water protocol that actually works (hint: it\'s not just a pinch of salt in a glass), and how to distinguish between "normal" keto transition fatigue and something that needs a different intervention.</p>',
+
+      '<h2>Why Does Keto Make You So Tired in the First Place?</h2>',
+      '<p>To understand the timeline, you need to understand the mechanism — because your recovery speed depends entirely on how well you address the root cause.</p>',
+      '<p>Keto fatigue is not a single phenomenon. It\'s the convergence of three distinct physiological events happening simultaneously:</p>',
+      '<ol><li><strong>Electrolyte depletion (the primary cause):</strong> When you restrict carbs, your body releases glycogen — each gram carries 3-4 grams of water. This water flush carries sodium, potassium, and magnesium out of your body at rates your kidneys aren\'t accustomed to. Your blood volume drops, blood pressure can fall, and your cells don\'t get the electrolyte gradient they need to produce energy efficiently.</li><li><strong>Mitochondrial transition:</strong> Your cells are switching from burning glucose to burning fat and ketones. This transition takes time — your mitochondria need to upregulate the enzymes required for fat oxidation. This process starts immediately but takes 1-2 weeks to reach efficiency.</li><li><strong>Reduced glucose availability:</strong> Your brain can run on ketones, but it prefers glucose. During the transition, your brain gets about 30% of its energy from ketones and 70% from remaining glucose (via gluconeogenesis). This hybrid fuel state can feel mentally draining until ketone production ramps up around days 5-7.</li></ol>',
+      '<p>Here\'s the crucial distinction: <strong>salt water fixes #1 immediately but does nothing for #2 and #3.</strong> That\'s why understanding exactly how long keto fatigue lasts if you drink salt water depends on which type of fatigue you\'re experiencing.</p>',
+
+      '<h2>The Timeline: What Happens When You Drink Salt Water for Keto Fatigue</h2>',
+      '<p>Let\'s assume you\'re experiencing electrolyte-deficiency fatigue (the heavy, drained, "can\'t get off the couch" kind). Here\'s your recovery timeline with proper salt water dosing:</p>',
+
+      '<h3>Minutes 15-30: Initial Absorption</h3>',
+      '<p>Within 15 minutes of drinking 500ml of water with 1/2 teaspoon of salt, the sodium enters your bloodstream. Your blood volume begins to increase, which raises blood pressure toward normal levels. You may feel a slight headache lift or a sense of your body "waking up." This is not the full recovery — it\'s the first signal that you\'re on the right track.</p>',
+
+      '<h3>Hours 1-3: Noticeable Improvement</h3>',
+      '<p>This is where most people feel the most dramatic shift. Your blood volume is now restored. Your cells have received sodium to maintain their electrochemical gradients. The "heavy" fatigue — the feeling that your limbs are filled with sand — typically lifts during this window. You\'re not at 100%, but you\'re functional. You can get off the couch, make food, think clearly enough to work.</p>',
+
+      '<h3>Hours 4-8: Sustained Energy with Potential Dips</h3>',
+      '<p>Your body is now processing the sodium and maintaining better electrolyte balance. However, your kidneys are still excreting more sodium than normal (this lasts 3-5 days). You may experience energy dips 3-4 hours after your last salty drink. The solution: sip salted water consistently rather than drinking it all at once.</p>',
+
+      '<h3>Day 2: Significant Recovery</h3>',
+      '<p>If you maintained your electrolyte intake through day 1, day 2 should feel dramatically better. The electrolyte-deficiency fatigue should be 70-80% resolved. What remains is the mitochondrial transition fatigue — which feels different. It\'s less "heavy" and more "I need more coffee." Your body is still adapting its energy systems.</p>',
+
+      '<h3>Days 3-5: The Plateau Before the Breakthrough</h3>',
+      '<p>Many people report a "second wave" of fatigue around days 3-5, even with perfect electrolyte intake. Do not panic — this is not a failure of the salt water protocol. This is your mitochondria upregulating fat-burning enzymes. It\'s a different kind of fatigue: less debilitating, more of a general low-energy feeling that comes in waves. Your electrolyte-based energy is stable. Your metabolic energy is still building.</p>',
+
+      '<h3>Days 5-7: The Energy Breakthrough</h3>',
+      '<p>This is when most people report the "keto clarity" — stable energy that doesn\'t crash, mental focus, and no mid-afternoon slump. By day 7, your mitochondria have significantly increased their capacity to burn fat. Your brain is running efficiently on ketones. And if you\'ve maintained electrolytes, the fatigue is gone.</p>',
+
+      '<h2>The Exact Salt Water Protocol (Not Just "Drink More Salt")</h2>',
+      '<p>The phrase "drink salt water" is dangerously oversimplified. Here\'s the precise protocol that determines how long your keto fatigue lasts:</p>',
+
+      '<h3>Step 1: The Correct Salt-to-Water Ratio</h3>',
+      '<p><strong>1/4 to 1/2 teaspoon of salt per 500ml (16oz) of water.</strong> Less than this won\'t raise your blood sodium enough to matter. More than this can cause nausea or diarrhea (your body will reject excess salt). Start with 1/4 teaspoon per glass and work up to 1/2 teaspoon if needed.</p>',
+
+      '<h3>Step 2: The Right Type of Salt</h3>',
+      '<p><strong>Any salt works for sodium.</strong> Table salt, sea salt, pink Himalayan salt — they all contain roughly the same amount of sodium by weight (~2,300mg per teaspoon). The mineral differences between salts are negligible for electrolyte purposes. Use what you have.</p>',
+
+      '<h3>Step 3: The Complete Electrolyte Stack</h3>',
+      '<p>Salt water alone fixes sodium, but <strong>keto fatigue requires potassium and magnesium too.</strong> Here\'s the complete daily target:</p>',
+      '<ul><li><strong>Sodium:</strong> 5,000-6,000mg (from salt + food + broth)</li><li><strong>Potassium:</strong> 3,000-4,700mg (from avocado, spinach, zucchini, and/or potassium chloride supplement)</li><li><strong>Magnesium:</strong> 300-400mg (magnesium glycinate — split morning and night)</li></ul>',
+      '<p>Drink the salt water throughout the day — don\'t chug it. Take potassium with meals to avoid nausea. Take magnesium at night for better sleep quality (which also affects energy).</p>',
+
+      '<h2>Sample Salt Water Schedule for Fastest Recovery</h2>',
+      '<p>This is my recommended schedule for someone currently in keto fatigue who wants to recover as quickly as possible:</p>',
+      '<ul><li><strong>Upon waking:</strong> 500ml water + 1/4 tsp salt + squeeze of lemon. Sip over 20 min.</li><li><strong>With breakfast:</strong> 200mg magnesium glycinate + half avocado (natural potassium).</li><li><strong>Mid-morning:</strong> 1 cup bone broth (~900mg sodium) or 500ml water + 1/4 tsp salt.</li><li><strong>With lunch:</strong> Large spinach salad + avocado + salted protein (chicken, fish, beef).</li><li><strong>Afternoon:</strong> 500ml water + 1/4 tsp salt + 1/8 tsp potassium chloride. Sip slowly.</li><li><strong>With dinner:</strong> Potassium-rich vegetables (broccoli, zucchini) + salted protein.</li><li><strong>Before bed:</strong> 200mg magnesium glycinate.</li></ul>',
+      '<p>Follow this schedule for 72 hours. By the end of day 3, your electrolyte-driven fatigue should be fully resolved. If it\'s not, you may need to increase your sodium to 6,000-7,000mg or check for other causes (sleep quality, calorie intake, underlying health conditions).</p>',
+
+      '<h2>Why Salt Water Might Not Be Working for You (Troubleshooting)</h2>',
+      '<p>If you\'ve been drinking salt water for 24+ hours and still feel exhausted, here\'s why:</p>',
+      '<h3>1. You\'re Getting Sodium but Not Potassium</h3>',
+      '<p>Salt water only provides sodium. If your fatigue includes muscle weakness, heart palpitations, or a "heavy" feeling in your limbs, you\'re likely potassium deficient. Potassium is the primary intracellular electrolyte — without it, your cells can\'t produce energy even if sodium levels are adequate. Add half an avocado, a spinach salad, or a potassium chloride supplement to your routine.</p>',
+      '<h3>2. You\'re Not Getting Enough Total Sodium</h3>',
+      '<p>"A pinch of salt" is not enough. You need 5,000-6,000mg of sodium per day during the first week of keto. That\'s about 2.5 teaspoons of salt distributed across all your meals and drinks. Measure it for at least 2 days to calibrate your intake.</p>',
+      '<h3>3. You\'re Under-Eating Calories</h3>',
+      '<p>Keto fatigue is sometimes mistaken for calorie-deficiency fatigue. If you\'re eating less than 1,200 calories (women) or 1,500 (men) while transitioning to keto, your body may simply not have enough energy to function. Eat at maintenance calories for the first 3-5 days, then reduce after your energy stabilizes. Use our <a href="https://ketoai.app/calculator">keto calculator</a> to find your proper calorie target.</p>',
+      '<h3>4. You\'re Not Sleeping Enough</h3>',
+      '<p>Keto transition often disrupts sleep in the first few nights due to changing neurotransmitter levels. Poor sleep amplifies fatigue exponentially. Take 200mg magnesium glycinate before bed, avoid caffeine after 2 PM, and prioritize 7.5-8 hours of sleep during the first week.</p>',
+
+      '<h2>Comparing Recovery: Salt Water vs No Intervention</h2>',
+      '<table><thead><tr><th>Timeline</th><th>With Proper Salt Water + Electrolytes</th><th>Without Electrolyte Intervention</th></tr></thead><tbody><tr><td>Day 1-2</td><td>Mild to moderate fatigue; functional with effort</td><td>Severe fatigue; may need to take time off work</td></tr><tr><td>Day 3-4</td><td>70-80% energy restored; mitochondrial transition fatigue remains</td><td>Moderate fatigue; still struggling with basic tasks</td></tr><tr><td>Day 5-7</td><td>Energy breakthrough; stable energy, mental clarity</td><td>Gradual improvement; still not at baseline</td></tr><tr><td>Day 7-14</td><td>Full energy adaptation; better energy than pre-keto for many</td><td>Reaching baseline; some still reporting low energy</td></tr></tbody></table>',
+      '<p>As you can see, the answer to "how long does keto fatigue last if you drink salt water" is: <strong>most people feel functional within 1-3 hours and fully recovered from electrolyte fatigue within 24-48 hours.</strong> Without it, you\'re looking at 5-14 days of low energy. That\'s the power of getting your electrolytes right.</p>',
+
+      '<h2>When Is It Not Keto Fatigue? (Red Flags)</h2>',
+      '<p>Not every symptom during your first week of keto is keto flu. Watch for these signs that something else may be going on:</p>',
+      '<ul><li><strong>Shortness of breath with mild exertion:</strong> Could indicate anemia or cardiovascular issues. See a doctor.</li><li><strong>Severe or persistent heart palpitations:</strong> While mild palpitations can be electrolyte-related, severe or persistent ones require medical evaluation.</li><li><strong>Fever or body aches:</strong> You may actually be sick. Keto flu doesn\'t cause a fever.</li><li><strong>Fatigue that worsens after the first week:</strong> If you feel <em>more</em> tired on day 10 than day 3, something else is happening. Check your calorie intake, sleep quality, and stress levels — and consult a healthcare provider if it persists.</li></ul>',
+
+      '<h2>Frequently Asked Questions</h2>',
+      '<h3>Can I drink salt water too fast?</h3>',
+      '<p>Yes. Drinking a liter of salt water in 5 minutes can cause nausea, vomiting, and a rapid spike in blood pressure. Sip salted water over 20-30 minutes per glass. Your body can only absorb about 200-400mg of sodium per hour through the gut — the rest is excreted or causes digestive distress.</p>',
+      '<h3>Does the type of salt matter for fatigue recovery?</h3>',
+      '<p>No. Table salt, sea salt, and pink Himalayan salt all contain 98-99% sodium chloride. The trace minerals in fancy salts are nutritionally insignificant. Use the cheapest salt you have — it works exactly the same.</p>',
+      '<h3>Will drinking salt water make me retain water?</h3>',
+      '<p>Temporarily, yes — and that\'s actually the goal. The water retention from sodium helps restore your blood volume to normal levels, which is what eliminates the dizziness and fatigue. This is not "water weight" in the cosmetic sense. It\'s your body holding onto the fluid it needs to function. Once your kidneys adapt to keto (usually 2-4 weeks), the excess water will normalize.</p>',
+      '<h3>How is this different from the keto flu guide?</h3>',
+      '<p>This guide focuses specifically on <strong>fatigue</strong> — its unique timeline, mechanisms, and recovery — whereas our <a href="https://ketoai.app/blog/how-to-avoid-keto-flu-symptoms-before-they-start">keto flu prevention guide</a> covers the full symptom spectrum (headache, cramps, brain fog, etc.) and focuses on prevention rather than recovery. If you\'re trying to decide which to read first: if you haven\'t started keto yet, read the prevention guide. If you\'re already fatigued, start here.</p>',
+      '<h3>What if salt water doesn\'t help my fatigue at all?</h3>',
+      '<p>If you\'ve been following the full electrolyte protocol (sodium, potassium, magnesium) for 48 hours with no improvement, stop. You may have an underlying issue — iron deficiency, thyroid dysfunction, or simply not eating enough calories. Use our <a href="https://ketoai.app/calculator">keto calculator</a> to check your calorie target, and see a doctor if fatigue persists beyond 10 days despite proper electrolytes and adequate nutrition.</p>',
+
+      '<h2>The Bottom Line: Salt Water Works, But It\'s Not Magic</h2>',
+      '<p>To summarize exactly how long keto fatigue lasts if you drink salt water:</p>',
+      '<ul><li><strong>15-30 minutes:</strong> Initial absorption, slight improvement</li><li><strong>1-3 hours:</strong> Significant improvement in electrolyte-related fatigue</li><li><strong>24-48 hours:</strong> Full resolution of electrolyte-driven fatigue with consistent dosing</li><li><strong>5-7 days:</strong> Mitochondrial adaptation completes; stable "keto energy" arrives</li></ul>',
+      '<p>The key insight is this: salt water fixes the <strong>electrolyte</strong> component of keto fatigue quickly. But there\'s a second layer — the <strong>metabolic</strong> component — that takes 5-7 days regardless of how much salt you drink. Don\'t confuse the two. Fix what you can fix (electrolytes), and be patient with what you can\'t (metabolic adaptation).</p>',
+      '<p>Start with a glass of salted water right now. Then use our <a href="https://ketoai.app/calculator">free keto calculator</a> to make sure your calories are adequate, and generate a <a href="https://ketoai.app/meal-planner">personalized AI meal plan</a> that includes electrolyte-rich foods to speed your recovery.</p>',
+      '<p>Your energy is coming back. Sooner than you think.</p>',
+
+      // Meta layer
+      '<!-- META-TITLE: How Long Does Keto Fatigue Last If You Drink Salt Water? Timeline + Recovery Protocol -->',
+      '<!-- META-DESCRIPTION: Exactly how long keto fatigue lasts if you drink salt water — minute-by-minute recovery timeline, the correct salt water ratio, and why some fatigue persists even with perfect electrolytes. -->',
+      '<!-- CTR-HEADLINE-ALT: I Drank Salt Water for Keto Fatigue and Here\'s Exactly When My Energy Came Back (Hour-by-Hour) -->',
+      '<!-- CTX-RELATED: keto fatigue recovery, keto tiredness salt water, how long does keto flu last, keto fatigue timeline, keto energy restoration, electrolytes for keto fatigue, why am I so tired on keto -->',
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
