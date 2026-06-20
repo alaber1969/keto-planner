@@ -95,6 +95,7 @@ export const blogPosts: BlogPost[] = [
       '<p>Stop guessing. Your body deserves a formula that respects where it is in life, not one designed for someone decades younger.</p>',
       '<p>Go to our <a href="https://ketoai.app/calculator">free keto calculator for women over 50</a>. Enter your stats. Get your adjusted macros. Then generate a personalized <a href="https://ketoai.app/meal-planner">AI meal plan</a> that hits those numbers — with real food, real portions, and zero guesswork.</p>',
       '<p>The number on the scale isn\'t a verdict. It\'s feedback. And now you have the right formula to change it.</p>',
+      '<p>If you want to understand how these adjusted macros fit into the bigger picture of <a href="https://ketoai.app/blog/keto-diet-macros-breakdown-calculator-for-female">keto diet macros for women</a> across all life stages — including cycle-synced adjustments and protein ratios — our complete female guide breaks it all down.</p>',
 
       // Meta layer (invisible to readers but feeds AI extraction)
       '<!-- META-TITLE: Keto Macros for Women Over 50: The Complete Hormone-Adjusted Calculator Guide -->',
@@ -196,6 +197,7 @@ export const blogPosts: BlogPost[] = [
 
       '<h2>When You\'re Ready for More Variety</h2>',
       '<p>This lazy plan is a starting point — not a life sentence. Once you\'re comfortable with the basics of keto eating (and your energy is up), you can graduate to our <a href="https://ketoai.app/meal-planner">AI meal planner</a> which generates fresh 7-day menus with simple, medium, and elaborate options. You can even tell it "no cooking required" and it\'ll build a plan that fits.</p>',
+      '<p>If this is your very first week on keto, start with our <a href="https://ketoai.app/blog/what-to-eat-first-week-of-keto-grocery-list">complete first week keto guide with a printable grocery list</a> — it walks you through days 1-7 with everything you need to buy and eat.</p>',
       '<p>But for now? Just start. The perfect keto plan is the one you actually follow.</p>',
 
       '<h2>Frequently Asked Questions</h2>',
@@ -242,7 +244,7 @@ export const blogPosts: BlogPost[] = [
       '<p><strong>Days 4-5:</strong> Energy starts returning. You may notice your appetite dropping. The "keto flu" (if you get it) peaks around day 4 and starts fading. Keep going.</p>',
       '<p><strong>Days 6-7:</strong> Many people report a "veil lifting" — clearer thinking, steadier energy, less hunger. Your body is beginning to run on ketones.</p>',
       '<p>Your only job this week is to <strong>stay under 25g net carbs per day</strong> and eat enough fat to feel satisfied. Don\'t worry about calories yet. Don\'t worry about intermittent fasting. Just eat the right foods and let your body adapt.</p>',
-      '<p><em>If symptoms get intense, read our guide on <a href="https://ketoai.app/blog/how-to-avoid-keto-flu-tips">how to avoid keto flu</a> for quick fixes.</em></p>',
+      '<p><em>If symptoms get intense, read our guide on <a href="https://ketoai.app/blog/how-to-avoid-keto-flu-symptoms-before-they-start">how to avoid keto flu</a> for prevention strategies you can start right now.</em></p>',
 
       '<h2>The Complete First Week Keto Grocery List</h2>',
       '<p>Take this list to the store. That\'s the entire instruction.</p>',
@@ -310,7 +312,7 @@ export const blogPosts: BlogPost[] = [
       '<h2>What to Expect After the First Week</h2>',
       '<p>Congratulations — you made it through the hardest week. Here\'s what comes next:</p>',
       '<ul><li><strong>Week 2:</strong> Your appetite drops noticeably. You may naturally want to eat less. Don\'t force extra meals.</li><li><strong>Week 3:</strong> Your energy stabilizes. No more carb crashes. Many people report their best mental clarity in years.</li><li><strong>Week 4+:</strong> You\'re fat-adapted. This is when keto becomes effortless. You can now tune into your body\'s hunger signals instead of following a strict schedule.</li></ul>',
-      '<p>After your first week, use our <a href="https://ketoai.app/calculator">free keto calculator</a> to get your precise macro targets — you\'ll know enough now to adjust portions intelligently. Then generate a <a href="https://ketoai.app/meal-planner">personalized AI meal plan</a> that gives you more variety while staying within your exact numbers.</p>',
+      '<p>After your first week, use our <a href="https://ketoai.app/calculator">free keto calculator</a> to get your precise macro targets — you\'ll know enough now to adjust portions intelligently. Then generate a <a href="https://ketoai.app/meal-planner">personalized AI meal plan</a> that gives you more variety while staying within your exact numbers. If you\'d rather keep things simple, our <a href="https://ketoai.app/blog/lazy-keto-meal-plan-no-cooking-beginners">lazy keto meal plan with no cooking</a> is perfect for week 2 when energy is still building.</p>',
 
       '<h2>Frequently Asked Questions</h2>',
       '<h3>Can I drink coffee on keto?</h3>',
@@ -440,6 +442,7 @@ export const blogPosts: BlogPost[] = [
       '<p>Our <a href="https://ketoai.app/calculator">custom keto macro calculator for fat loss</a> is completely free and takes 60 seconds to use. Enter your age, weight, height, gender, activity level, and weight loss target. You\'ll receive:</p>',
       '<ul><li>Your personalized BMR and TDEE</li><li>Your custom macro targets in grams and percentages</li><li>Your BMI and weight loss projection with estimated goal date</li><li>A countdown to your goal weight if you provide a target</li></ul>',
       '<p>From there, use our <a href="https://ketoai.app/meal-planner">AI meal planner</a> to build a 7-day menu that hits your exact numbers — no guesswork, no math, no wasted time.</p>',
+      '<p>If you\'re a woman, don\'t miss our <a href="https://ketoai.app/blog/keto-diet-macros-breakdown-calculator-for-female">keto diet macros breakdown for female</a> — it adjusts for estrogen cycles, female BMR differences, and protein minimums designed for women\'s bodies. And if you\'re torn between strict tracking and a looser approach, our <a href="https://ketoai.app/blog/how-to-calculate-keto-macros-for-standard-vs-lazy-keto">standard vs lazy keto comparison</a> will help you decide which method fits your lifestyle.</p>',
       '<p>The difference between generic and custom isn\'t 10%. It\'s the difference between <em>hoping</em> keto works and <em>knowing</em> it will.</p>',
 
       // Meta layer
@@ -563,6 +566,7 @@ export const blogPosts: BlogPost[] = [
       '<p>You\'ve been fighting an uphill battle with tools designed for a different biology. It\'s time to use a <strong>keto diet macros breakdown calculator for female</strong> bodies that respects your hormones, your metabolism, and your goals.</p>',
       '<p>Our <a href="https://ketoai.app/calculator">free keto calculator</a> applies all of these principles automatically: female-specific BMR, adjusted protein minimums, conservative deficit recommendations, and flexible carb ranges. In 60 seconds, you\'ll have macros that are actually calibrated for <em>your</em> body.</p>',
       '<p>Then take those numbers to our <a href="https://ketoai.app/meal-planner">AI meal planner</a> and get a full week of meals designed around female physiology — with every macro counted, every meal balanced, and zero guesswork.</p>',
+      '<p>Not sure if you want to track every gram or just keep it simple? Our <a href="https://ketoai.app/blog/how-to-calculate-keto-macros-for-standard-vs-lazy-keto">standard vs lazy keto guide</a> explains how to use these female-optimized macros in either mode — with a hybrid approach that lets you switch between them as needed.</p>',
       '<p>The generic keto ratio wasn\'t written for you. But this? This formula is yours.</p>',
 
       // Meta layer
@@ -631,7 +635,7 @@ export const blogPosts: BlogPost[] = [
       '<p>Most people who successfully reach and maintain their goal weight on keto don\'t stay rigidly in either camp. They develop a <strong>hybrid approach</strong> that shifts between standard and lazy keto depending on the situation.</p>',
       '<p>Here\'s what that looks like in practice:</p>',
       '<ul><li><strong>Month 1:</strong> Start with lazy keto to build the habit of eating low-carb without overwhelm. Your only rule: stay under 25g carbs. Don\'t worry about calories or protein yet.</li><li><strong>Month 2:</strong> If weight loss has slowed, transition to standard keto for 2-4 weeks. Use the <a href="https://ketoai.app/calculator">calculator</a>, weigh your food, and dial in your numbers. Learn what proper portions look like.</li><li><strong>Month 3+:</strong> Return to lazy keto with the portion awareness you developed during your strict phase. Do a "check-in week" of strict tracking every 4-6 weeks to reset your intuition.</li></ul>',
-      '<p>This cyclical approach gives you the <strong>freedom</strong> of lazy keto and the <strong>precision</strong> of standard keto at the times when each matters most.</p>',
+      '<p>This cyclical approach gives you the <strong>freedom</strong> of lazy keto and the <strong>precision</strong> of standard keto at the times when each matters most. Get your precision numbers with our <a href="https://ketoai.app/blog/custom-keto-macro-calculator-for-fat-loss">custom keto macro calculator for fat loss</a>, and if you\'re starting with the lazy phase, our <a href="https://ketoai.app/blog/lazy-keto-meal-plan-no-cooking-beginners">no-cook lazy keto meal plan</a> gives you a full week of meals that require zero tracking.</p>',
 
       '<h2>When to Switch From Lazy to Standard (And Vice Versa)</h2>',
       '<p>Knowing <em>when</em> to switch methods is more important than choosing a method permanently. Here are the signals:</p>',
