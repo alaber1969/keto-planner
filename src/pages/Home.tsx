@@ -9,9 +9,9 @@ import { Badge } from '../components/ui/badge';
 
 export default function Home() {
   useEffect(() => {
-    document.title = 'KetoPlanner — AI-Powered Keto Diet Calculator & Meal Planner';
+    document.title = 'KetoPlanner — #1 Keto AI Diet Calculator & Meal Planner';
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', 'Get your personalized keto macro calculations and AI-generated 7-day meal plan. Free keto calculator for BMR, TDEE, BMI, and custom recipes.');
+    if (meta) meta.setAttribute('content', 'Free Keto AI calculator and meal planner. Get personalized keto macros, BMR, TDEE, BMI, and AI-generated meal plans tailored to your body. No account required.');
   }, []);
 
   const features = [
@@ -85,15 +85,15 @@ export default function Home() {
               ✨ Science-Based Keto Planning
             </Badge>
             <h1 className="mb-6 text-4xl md:text-6xl font-bold leading-tight text-white">
-              Your Personalized
+              Your AI-Powered
               <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
                 Keto Journey
               </span>
               Starts Here
             </h1>
             <p className="mb-8 text-lg md:text-xl text-gray-100 max-w-xl">
-              Transform your health with our comprehensive keto diet planning platform.
-              Get personalized meal plans, macro calculations, and expert guidance for sustainable weight loss.
+              Transform your health with our Keto AI platform.
+              Get personalized meal plans, precision macro calculations, and expert guidance for sustainable weight loss.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50 shadow-lg" asChild>

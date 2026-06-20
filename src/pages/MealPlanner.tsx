@@ -48,7 +48,7 @@ export default function MealPlanner() {
 
   // Set page title
   useEffect(() => {
-    document.title = 'AI Keto Meal Planner — Generate Custom 7-Day Diet Plans | KetoPlanner';
+    document.title = 'Keto AI Meal Planner — Generate Custom 7-Day Diet Plans | KetoPlanner';
   }, []);
 
   // Auto-generate when macro targets are available and no plan exists

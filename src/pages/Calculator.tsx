@@ -48,7 +48,9 @@ export default function Calculator() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Free Keto Macro Calculator — BMR, TDEE & BMI | KetoPlanner';
+    document.title = 'Keto AI Calculator — Free Personalized Macro Calculator | KetoPlanner';
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', 'Free Keto AI macro calculator. Get your personalized BMR, TDEE, BMI, and custom keto macros for fat loss. Precision results tailored to your age, weight, height, and activity level.');
   }, []);
 
   const form = useForm<FormData>({
