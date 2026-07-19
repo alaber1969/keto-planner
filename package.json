@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "yes | pnpm install && vite",
     "dev:all": "pnpm dev & cd server && npm run dev",
-    "build": "yes | pnpm install && rm -rf node_modules/.vite-temp && tsc -b && vite build",
+    "build": "yes | pnpm install && rm -rf node_modules/.vite-temp && tsc -b && vite build && node scripts/prerender.cjs",
     "lint": "yes | pnpm install && eslint .",
     "preview": "yes | pnpm install && vite preview",
     "server:install": "cd server && npm install",

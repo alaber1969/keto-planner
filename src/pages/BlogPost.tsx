@@ -8,6 +8,27 @@ import { Alert, AlertDescription } from '../components/ui/alert';
 import SocialShare from '../components/SocialShare';
 import { getBlogPost, getRecentPosts } from '../content/blog-posts';
 
+function injectMeta(name: string, content: string) {
+  let el = document.querySelector(`meta[name="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute('name', name); document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+
+function injectMetaProperty(property: string, content: string) {
+  let el = document.querySelector(`meta[property="${property}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute('property', property); document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+
+function removeExistingJSONLD(type: string) {
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(script => {
+    try {
+      const data = JSON.parse(script.textContent || '{}');
+      if (data['@type'] === type) script.remove();
+    } catch { /* skip */ }
+  });
+}
+
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getBlogPost(slug) : undefined;
@@ -15,11 +36,57 @@ export default function BlogPost() {
 
   useEffect(() => {
     if (post) {
-      document.title = `${post.title} | KetoPlanner Blog`;
-      const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.setAttribute('content', post.description);
-      const keywords = document.querySelector('meta[name="keywords"]');
-      if (keywords) keywords.setAttribute('content', post.keywords);
+      const url = `https://ketoai.app/blog/${post.slug}`;
+      const image = post.image ? `https://ketoai.app${post.image}` : 'https://ketoai.app/og-image.png';
+
+      // --- Core SEO ---
+      document.title = `${post.title} | KetoPlanner`;
+      injectMeta('description', post.description);
+      injectMeta('keywords', post.keywords);
+      injectMeta('robots', 'index, follow');
+
+      // --- Canonical ---
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) { canonical = document.createElement('link'); canonical.setAttribute('rel', 'canonical'); document.head.appendChild(canonical); }
+      canonical.setAttribute('href', url);
+
+      // --- Open Graph ---
+      injectMetaProperty('og:title', post.title);
+      injectMetaProperty('og:description', post.description);
+      injectMetaProperty('og:url', url);
+      injectMetaProperty('og:image', image);
+      injectMetaProperty('og:type', 'article');
+
+      // --- Twitter Card ---
+      injectMeta('twitter:title', post.title);
+      injectMeta('twitter:description', post.description);
+      injectMeta('twitter:image', image);
+      injectMeta('twitter:card', 'summary_large_image');
+
+      // --- JSON-LD BlogPosting Schema ---
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.description,
+        "image": image,
+        "datePublished": post.date,
+        "author": { "@type": "Person", "name": post.author },
+        "publisher": {
+          "@type": "Organization",
+          "name": "KetoPlanner",
+          "logo": { "@type": "ImageObject", "url": "https://ketoai.app/logo.svg" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": url }
+      };
+
+      // Remove old BlogPosting schemas before adding fresh one
+      removeExistingJSONLD('BlogPosting');
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
     }
   }, [post]);
 

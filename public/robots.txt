@@ -5,6 +5,8 @@ Allow: /meal-planner
 Allow: /guide
 Allow: /education
 Allow: /progress
+Allow: /blog
+Allow: /blog/
 Disallow: /privacy
 Disallow: /terms
 Disallow: /disclaimer
