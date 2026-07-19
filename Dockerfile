@@ -19,6 +19,7 @@ RUN cd server && npm install --production
 
 # Copy source code
 COPY tsconfig.json tsconfig.app.json tsconfig.node.json vite.config.ts tailwind.config.js postcss.config.js components.json index.html ./
+COPY scripts/ scripts/
 COPY src/ src/
 COPY public/ public/
 COPY server/ server/
