@@ -36,7 +36,7 @@ export default function BlogPost() {
 
   useEffect(() => {
     if (post) {
-      const url = `https://ketoai.app/blog/${post.slug}`;
+      const url = `https://ketoai.app/blog/${post.slug}/`;
       const image = post.image ? `https://ketoai.app${post.image}` : 'https://ketoai.app/og-image.png';
 
       // --- Core SEO ---
@@ -155,7 +155,7 @@ export default function BlogPost() {
             <SocialShare
               title={post.title}
               description={post.description}
-              url={`https://ketoai.app/blog/${post.slug}`}
+              url={`https://ketoai.app/blog/${post.slug}/`}
             />
           </div>
         </div>

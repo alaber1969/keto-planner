@@ -387,10 +387,16 @@ app.post('/api/generate-meal-plan', perMinuteLimiter, dailyLimiter, async (req, 
 // --- Serve static frontend in production ---
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
+  const fs = require('fs');
   const distPath = path.join(__dirname, '..', 'dist');
   app.use(express.static(distPath));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(distPath, 'index.html'));
+    // SPA fallback. Prefer the pristine shell (_spa-shell.html) written by
+    // scripts/prerender.cjs so routes like /terms or /privacy don't inherit the
+    // homepage's prerendered body/meta. Falls back to index.html if missing.
+    const fallback = path.join(distPath, '_spa-shell.html');
+    const file = fs.existsSync(fallback) ? fallback : path.join(distPath, 'index.html');
+    res.sendFile(file);
   });
 }
 
