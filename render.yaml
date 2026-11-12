@@ -1,0 +1,30 @@
+# Render Blueprint — free Docker web service for ketoai.app
+# Docs: https://render.com/docs/blueprint-spec
+#
+# The Express server serves both the prerendered frontend (dist/) and
+# /api/generate-meal-plan, so this is a single-service deployment.
+services:
+  - type: web
+    name: ketoai
+    runtime: docker
+    plan: free
+    # Closest Render region to Australia/Asia. Other options: oregon, ohio,
+    # virginia, frankfurt. Region cannot be changed after creation.
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: LLM_PROVIDER
+        value: openai
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      # Prompted for during Blueprint creation; never stored in the repo.
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: RATE_LIMIT_PER_MIN
+        value: "5"
+      - key: RATE_LIMIT_DAILY
+        value: "30"

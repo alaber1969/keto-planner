@@ -1,0 +1,18 @@
+# Keep the Docker build context small (Render free builds have a monthly
+# build-minute allowance; uploading node_modules/dist wastes time).
+node_modules
+**/node_modules
+dist
+build
+.git
+.gitignore
+.env
+.env.*
+*.log
+npm-debug.log*
+pnpm-debug.log*
+README.md
+DEPLOYMENT_README.md
+docker-compose.yml
+railway.json
+.gitlab-ci.yml

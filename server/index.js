@@ -27,10 +27,20 @@ setInterval(() => {
 }, 60 * 60 * 1000);
 
 // --- Middleware ---
+// Same-origin in production (this server serves the built frontend), so CORS
+// only matters if the frontend is hosted separately. CORS_ORIGIN accepts a
+// comma-separated allowlist; use "*" to allow any origin.
+function getAllowedOrigins() {
+  const configured = (process.env.CORS_ORIGIN || '').trim();
+  if (configured === '*') return '*';
+  if (configured) {
+    return configured.split(',').map((origin) => origin.trim()).filter(Boolean);
+  }
+  return ['https://ketoai.app', 'https://www.ketoai.app'];
+}
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? ['https://ketoai.app', 'https://keto-planner-production.up.railway.app']
-    : '*',
+  origin: process.env.NODE_ENV === 'production' ? getAllowedOrigins() : '*',
   methods: ['POST', 'GET'],
 }));
 app.use(express.json({ limit: '10mb' }));

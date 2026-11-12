@@ -5,7 +5,7 @@ function getApiPath(): string {
   if (import.meta.env.VITE_API_URL) {
     return `${import.meta.env.VITE_API_URL}/api/generate-meal-plan`;
   }
-  // 2. Default: same domain (works on Railway where Express serves both)
+  // 2. Default: same domain (Express serves both the app and the API)
   return '/api/generate-meal-plan';
 }
 
