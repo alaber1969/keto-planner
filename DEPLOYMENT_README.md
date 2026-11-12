@@ -20,15 +20,16 @@ separate frontend, no CORS configuration, and no code changes needed.
 2. Click **New +** → **Blueprint**.
 3. Connect the `alaber1969/keto-planner` repository. Render reads `render.yaml`
    from the repo root.
-4. When prompted, paste your OpenAI API key into `OPENAI_API_KEY`. This is the
-   same key that is in Railway's environment variables or your local `.env`.
+4. When prompted, paste your DeepSeek API key into `LLM_API_KEY`. This is the
+   same key that is in Railway's environment variables. Get a new one at
+   <https://platform.deepseek.com/api_keys> if needed.
 5. Click **Apply**. The first build installs pnpm dependencies, type-checks,
    builds the frontend, and runs `scripts/prerender.cjs`; it can take several
    minutes.
 6. Verify the temporary URL:
    - `https://<service-name>.onrender.com/` should render the site.
    - `https://<service-name>.onrender.com/api/health` should return
-     `{"status":"ok","provider":"openai",...}`.
+     `{"status":"ok","provider":"deepseek","model":"deepseek-chat"}`.
 
 If the name `ketoai` is already taken on Render, change `name:` in
 `render.yaml` to something unique (for example `ketoai-app`). The custom domain
@@ -75,9 +76,9 @@ non-secret ones):
 
 | Key | Value | Notes |
 | --- | --- | --- |
-| `OPENAI_API_KEY` | `sk-...` | Required. Secret — never commit it. |
-| `LLM_PROVIDER` | `openai` | Default. `deepseek` is also supported. |
-| `OPENAI_MODEL` | `gpt-4o-mini` | Default. |
+| `LLM_API_KEY` | `sk-...` | Required. DeepSeek API key (also accepted as `OPENAI_API_KEY` / `DEEPSEEK_API_KEY`). Secret — never commit it. |
+| `LLM_PROVIDER` | `deepseek` | Set in `render.yaml`. Use `openai` to switch providers. |
+| `OPENAI_MODEL` | `gpt-4o-mini` | Only used when `LLM_PROVIDER=openai`. The DeepSeek model is fixed to `deepseek-chat` in `server/index.js`. |
 | `RATE_LIMIT_PER_MIN` | `5` | Per-IP, in-memory. |
 | `RATE_LIMIT_DAILY` | `30` | Per-IP, in-memory. |
 | `CORS_ORIGIN` | optional | Comma-separated allowlist; only needed if the frontend is hosted on a different origin. Defaults to `https://ketoai.app,https://www.ketoai.app` in production. |
@@ -102,8 +103,8 @@ Dockerfile and in `render.yaml`.
 - **Site returns 502 or times out**: the free instance may be waking up, or the
   process crashed. Check Render → **Logs**.
 - **Site loads but AI generation fails**: check `/api/health`, then confirm
-  `OPENAI_API_KEY` is set in Render and has available quota. Server logs include
-  the provider error.
+  `LLM_API_KEY` is set in Render and the DeepSeek account has credit. Server
+  logs include the provider error.
 - **`robots.txt` shows `Disallow: /`**: the service is asleep. Enable/fix the
   UptimeRobot monitor, then request `/api/health` to wake it.
 - **First request after idle takes ~1 minute**: expected on the free plan; the
